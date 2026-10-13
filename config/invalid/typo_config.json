@@ -1,0 +1,4 @@
+{
+  "description": "Contains a typo (missing_value instead of missing_values): the run must be rejected, not silently ignore the rule.",
+  "missing_value": {"tokens": ["N/A"]}
+}

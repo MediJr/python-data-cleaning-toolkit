@@ -1,0 +1,4 @@
+# Sample data, expected outputs and example reports are compared byte for byte,
+# and their SHA-256 is recorded in reports: keep LF line endings on every platform.
+* text=auto eol=lf
+*.xlsx binary

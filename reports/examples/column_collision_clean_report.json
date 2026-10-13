@@ -1,0 +1,209 @@
+{
+  "report_type": "cleaning",
+  "tool": {
+    "name": "python-data-cleaning-toolkit",
+    "version": "0.1.0"
+  },
+  "generated_at": "2026-10-13T09:24:34+00:00",
+  "execution": {
+    "status": "failed",
+    "error": "Column-name normalization would merge distinct columns: 'Order ID' / 'order_id' -> 'order_id'. Add explicit renames for these columns or disable the conflicting option.",
+    "error_type": "ColumnCollisionError"
+  },
+  "data_quality": {
+    "status": "not_assessed",
+    "summary": "Execution failed, so data quality was not assessed. No cleaned output should be used from this run.",
+    "note": "The data-quality status reflects only the configured rules and the toolkit's built-in checks. It is not a certification that the data is correct or complete.",
+    "unresolved_anomaly_types": 0,
+    "unresolved_occurrences": 0
+  },
+  "input": {
+    "path": "data/sample/invalid/column_collision.csv",
+    "file_name": "column_collision.csv",
+    "format": "csv",
+    "encoding": "utf-8",
+    "delimiter": ",",
+    "delimiter_detected": true,
+    "sheet": null,
+    "available_sheets": [],
+    "rows": 2,
+    "columns": 3,
+    "skipped_blank_rows": 0,
+    "formula_cells": 0,
+    "uncalculated_formula_cells": 0,
+    "warnings": [],
+    "sha256_before": "c4e2e7979a0e31abdfe0ec0b871ca16ae2e7eaa733db52d194b744e0570ef882",
+    "sha256_after": "c4e2e7979a0e31abdfe0ec0b871ca16ae2e7eaa733db52d194b744e0570ef882",
+    "unchanged": true
+  },
+  "outputs": {},
+  "planned_outputs": {
+    "cleaned": "reports/examples/column_collision_clean.csv",
+    "quarantine": "reports/examples/column_collision_clean_quarantine.csv",
+    "removed_rows": "reports/examples/column_collision_clean_removed_rows.csv",
+    "report_json": "reports/examples/column_collision_clean_report.json",
+    "report_markdown": "reports/examples/column_collision_clean_report.md"
+  },
+  "dimensions": {
+    "initial": {
+      "rows": 2,
+      "columns": 3
+    },
+    "final": null,
+    "rows_removed": 0,
+    "rows_quarantined": 0,
+    "blank_rows_skipped_on_import": 0
+  },
+  "missing_values": [
+    {
+      "column": "Order ID",
+      "original_column": "Order ID",
+      "before": 0,
+      "after": null
+    },
+    {
+      "column": "order_id",
+      "original_column": "order_id",
+      "before": 0,
+      "after": null
+    },
+    {
+      "column": "Amount",
+      "original_column": "Amount",
+      "before": 0,
+      "after": null
+    }
+  ],
+  "columns": {
+    "mapping": {},
+    "renamed": {},
+    "cells_differing_from_input": {},
+    "changes_per_column_summed_over_steps": {}
+  },
+  "operations": [],
+  "conversion_failures": [],
+  "duplicates": {
+    "exact": null,
+    "keys": null
+  },
+  "validation": null,
+  "anomalies": [],
+  "warnings": [],
+  "steps": [],
+  "configuration": {
+    "description": "Snake-case normalization: on column_collision.csv this would merge \"Order ID\" and \"order_id\", so the run must stop.",
+    "input": {
+      "sheet": null,
+      "encoding": null,
+      "delimiter": null
+    },
+    "output": {
+      "csv_encoding": "utf-8",
+      "csv_delimiter": ",",
+      "sheet_name": "cleaned"
+    },
+    "column_names": {
+      "strip": true,
+      "collapse_whitespace": true,
+      "style": "snake_case",
+      "rename": {}
+    },
+    "missing_values": {
+      "tokens": [],
+      "case_sensitive": false,
+      "whitespace_as_missing": true
+    },
+    "text": [],
+    "categories": [],
+    "dates": [],
+    "numbers": [],
+    "duplicates": {
+      "remove_exact": false,
+      "key_columns": [],
+      "remove_key_duplicates": false,
+      "keep": "first"
+    },
+    "validation": []
+  },
+  "overrides": {
+    "overwrite": true
+  },
+  "profile_before": {
+    "rows": 2,
+    "columns": 3,
+    "column_names": [
+      "Order ID",
+      "order_id",
+      "Amount"
+    ],
+    "missing_cells": 0,
+    "missing_by_column": {
+      "Order ID": 0,
+      "order_id": 0,
+      "Amount": 0
+    },
+    "fully_missing_rows": 0,
+    "exact_duplicate_rows": 0,
+    "exact_duplicate_groups": [],
+    "column_profiles": {
+      "Order ID": {
+        "dtype": "string",
+        "non_missing": 2,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 2,
+        "value_kinds": {
+          "text": 2
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "SO-1",
+          "SO-2"
+        ]
+      },
+      "order_id": {
+        "dtype": "string",
+        "non_missing": 2,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 2,
+        "value_kinds": {
+          "text": 2
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "LEGACY-1",
+          "LEGACY-2"
+        ]
+      },
+      "Amount": {
+        "dtype": "string",
+        "non_missing": 2,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 2,
+        "value_kinds": {
+          "integer": 2
+        },
+        "inferred_type": "integer",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "10",
+          "20"
+        ]
+      }
+    }
+  },
+  "profile_after": null
+}

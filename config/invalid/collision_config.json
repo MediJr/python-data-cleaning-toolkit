@@ -1,0 +1,4 @@
+{
+  "description": "Snake-case normalization: on column_collision.csv this would merge \"Order ID\" and \"order_id\", so the run must stop.",
+  "column_names": {"style": "snake_case"}
+}

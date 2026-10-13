@@ -1,0 +1,7 @@
+order_id,order_date,customer_id,sku,quantity,unit_price,channel
+SO-1001,2024-03-01,000101,AB-001,2,19.99,Online
+SO-1001,2024-03-01,000101,AB-002,1,5,Online
+SO-1002,2024-03-01,101,AB-001,3,12.5,Store
+SO-1003,2024-03-02,000103,CD-100,two,1299,Store
+SO-1004,2024-13-01,000104,CD-200,0,,Phone
+SO-1005,2024-03-06 14:30:00,000106,EF-300,4,7.5,Phone

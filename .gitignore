@@ -1,0 +1,27 @@
+# Python environments, caches and build artefacts
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# Local outputs produced when trying the tool (examples in reports/examples/ are kept)
+output/
+*.tmp-*
+
+# Local configuration and secrets
+.env
+.env.*
+config.local.*
+
+# Editors and operating systems
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*.xlsx

@@ -1,0 +1,242 @@
+{
+  "report_type": "profile",
+  "tool": {
+    "name": "python-data-cleaning-toolkit",
+    "version": "0.1.0"
+  },
+  "generated_at": "2026-10-13T09:24:26+00:00",
+  "input": {
+    "path": "data/sample/customers_raw.csv",
+    "file_name": "customers_raw.csv",
+    "format": "csv",
+    "encoding": "utf-8",
+    "delimiter": ",",
+    "delimiter_detected": true,
+    "sheet": null,
+    "available_sheets": [],
+    "rows": 15,
+    "columns": 8,
+    "skipped_blank_rows": 0,
+    "formula_cells": 0,
+    "uncalculated_formula_cells": 0,
+    "warnings": []
+  },
+  "missing_tokens": [
+    "N/A",
+    "NULL"
+  ],
+  "profile": {
+    "rows": 15,
+    "columns": 8,
+    "column_names": [
+      "Customer ID",
+      " Full Name ",
+      "Email",
+      "City",
+      "Signup Date",
+      "Annual  Spend",
+      "Status",
+      "Postal Code"
+    ],
+    "missing_cells": 5,
+    "missing_by_column": {
+      "Customer ID": 1,
+      " Full Name ": 0,
+      "Email": 1,
+      "City": 0,
+      "Signup Date": 0,
+      "Annual  Spend": 3,
+      "Status": 0,
+      "Postal Code": 0
+    },
+    "fully_missing_rows": 0,
+    "exact_duplicate_rows": 1,
+    "exact_duplicate_groups": [
+      [
+        9,
+        10
+      ]
+    ],
+    "column_profiles": {
+      "Customer ID": {
+        "dtype": "string",
+        "non_missing": 14,
+        "missing": 1,
+        "missing_pct": 6.67,
+        "distinct": 12,
+        "value_kinds": {
+          "integer": 14
+        },
+        "inferred_type": "integer",
+        "leading_zero_values": 14,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "000101",
+          "000102",
+          "000103",
+          "000104",
+          "000105"
+        ]
+      },
+      " Full Name ": {
+        "dtype": "string",
+        "non_missing": 15,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 13,
+        "value_kinds": {
+          "text": 15
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 1,
+        "values_with_repeated_internal_spaces": 1,
+        "sample_values": [
+          "Ana Kovač",
+          "  ben   okafor ",
+          "Chloé Martin",
+          "Dev Patel",
+          "Elif Demir"
+        ]
+      },
+      "Email": {
+        "dtype": "string",
+        "non_missing": 14,
+        "missing": 1,
+        "missing_pct": 6.67,
+        "distinct": 13,
+        "value_kinds": {
+          "text": 14
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "ana.kovac@example.com",
+          "BEN.OKAFOR@EXAMPLE.COM",
+          "chloe.martin@example.com",
+          "dev.patel@example.com",
+          "elif.demir@example.com"
+        ]
+      },
+      "City": {
+        "dtype": "string",
+        "non_missing": 15,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 10,
+        "value_kinds": {
+          "text": 15
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 1,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "New York",
+          " new york",
+          "NEW YORK",
+          "NYC",
+          "Boston"
+        ]
+      },
+      "Signup Date": {
+        "dtype": "string",
+        "non_missing": 15,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 14,
+        "value_kinds": {
+          "date-like": 14,
+          "text": 1
+        },
+        "inferred_type": "mixed",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 1,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "2024-01-15",
+          "15/03/2024",
+          "03/04/2024",
+          "03/15/2024",
+          "2024-02-30"
+        ]
+      },
+      "Annual  Spend": {
+        "dtype": "string",
+        "non_missing": 12,
+        "missing": 3,
+        "missing_pct": 20.0,
+        "distinct": 11,
+        "value_kinds": {
+          "integer": 8,
+          "numeric-like": 2,
+          "text": 2
+        },
+        "inferred_type": "mixed",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "1,200.50",
+          "$950",
+          "1.234,50",
+          "-50",
+          "300"
+        ]
+      },
+      "Status": {
+        "dtype": "string",
+        "non_missing": 15,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 7,
+        "value_kinds": {
+          "text": 15
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "active",
+          "Active",
+          "inactive",
+          "ACTIVE",
+          "closed"
+        ]
+      },
+      "Postal Code": {
+        "dtype": "string",
+        "non_missing": 15,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 13,
+        "value_kinds": {
+          "integer": 15
+        },
+        "inferred_type": "integer",
+        "leading_zero_values": 4,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "02108",
+          "10001",
+          "00501",
+          "30301",
+          "2108"
+        ]
+      }
+    }
+  }
+}

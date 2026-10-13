@@ -1,0 +1,16 @@
+Customer ID, Full Name ,Email,City,Signup Date,Annual  Spend,Status,Postal Code
+000101,Ana Kovač,ana.kovac@example.com,New York,2024-01-15,"1,200.50",active,02108
+000102,  ben   okafor ,BEN.OKAFOR@EXAMPLE.COM, new york,15/03/2024,$950,Active,10001
+000103,Chloé Martin,chloe.martin@example.com,NEW YORK,03/04/2024,N/A,inactive,00501
+000104,Dev Patel,dev.patel@example.com,NYC,03/15/2024,"1.234,50",ACTIVE,30301
+000105,Elif Demir,elif.demir@example.com,Boston,2024-02-30,-50,active,2108
+000106,Femi Adeyemi,,Boston,2024-05-20,300,closed,02115
+000106,Femi Adeyemi,femi.a@example.com,Boston,2024-05-21,310,closed,02115
+000107,Grace Liu,grace.liu@example.com,Chicago,2024-06-01,780,active,60601
+000107,Grace Liu,grace.liu@example.com,Chicago,2024-06-01,780,active,60601
+,Hana Sato,hana.sato@example.com,Chicago,2024-07-04,410,active,60602
+000109,Ivan Petrov,ivan.petrov@example,Seattle,yesterday,twelve hundred,on hold,98101
+000110,Jo Kim,jo.kim@example.com,seattle,2031-01-01,NULL,inactive,98102
+000111,Kai Müller,kai.muller@example.com,Austin,2023-11-30,0,active,73301
+000112,Lena Novak,lena.novak@example.com,Austin,2023-12-01,150,unknown,73344
+000113,Mo Haddad,mo.haddad@example.com,Bostn,2024-08-09,   ,active,80202

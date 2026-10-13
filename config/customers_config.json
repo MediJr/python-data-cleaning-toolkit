@@ -1,0 +1,48 @@
+{
+  "description": "Cleaning rules for data/sample/customers_raw.csv (synthetic). Signup dates come from two source systems, one using DD/MM/YYYY and one MM/DD/YYYY, so both formats are listed: values that fit both are reported as ambiguous instead of guessed.",
+  "column_names": {"strip": true, "collapse_whitespace": true, "style": "snake_case"},
+  "missing_values": {"tokens": ["N/A", "NULL"], "case_sensitive": false, "whitespace_as_missing": true},
+  "text": [
+    {"columns": ["full_name", "city", "status"], "strip": true, "collapse_whitespace": true},
+    {"columns": ["email"], "strip": true, "case": "lower"}
+  ],
+  "categories": [
+    {
+      "column": "city",
+      "case_insensitive": true,
+      "mapping": {
+        "new york": "New York",
+        "nyc": "New York",
+        "boston": "Boston",
+        "chicago": "Chicago",
+        "seattle": "Seattle",
+        "austin": "Austin",
+        "denver": "Denver"
+      }
+    },
+    {
+      "column": "status",
+      "case_insensitive": true,
+      "mapping": {"active": "active", "inactive": "inactive", "closed": "closed"}
+    }
+  ],
+  "dates": [
+    {"column": "signup_date", "formats": ["%Y-%m-%d", "%d/%m/%Y", "%m/%d/%Y"], "output_format": "%Y-%m-%d", "on_error": "keep"}
+  ],
+  "numbers": [
+    {"column": "annual_spend", "decimal": ".", "thousands": ",", "strip_chars": "$", "on_error": "keep"}
+  ],
+  "duplicates": {"remove_exact": true, "key_columns": ["customer_id"], "remove_key_duplicates": false},
+  "validation": [
+    {"id": "required_columns", "rule": "required_columns", "columns": ["customer_id", "email", "signup_date"]},
+    {"id": "id_present", "rule": "not_null", "column": "customer_id", "action": "quarantine"},
+    {"id": "id_unique", "rule": "unique", "columns": ["customer_id"]},
+    {"id": "email_present", "rule": "not_null", "column": "email"},
+    {"id": "email_format", "rule": "pattern", "column": "email", "regex": "[^@\\s]+@[^@\\s]+\\.[^@\\s]+"},
+    {"id": "status_allowed", "rule": "allowed_values", "column": "status", "values": ["active", "inactive", "closed"], "action": "quarantine"},
+    {"id": "signup_is_iso_date", "rule": "type", "column": "signup_date", "expected": "date"},
+    {"id": "signup_in_range", "rule": "date_range", "column": "signup_date", "min": "2015-01-01", "max": "2026-12-31"},
+    {"id": "spend_non_negative", "rule": "range", "column": "annual_spend", "min": 0},
+    {"id": "postal_code_5_digits", "rule": "pattern", "column": "postal_code", "regex": "\\d{5}"}
+  ]
+}

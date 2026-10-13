@@ -1,0 +1,2 @@
+order_id,order_date,customer_id,sku,quantity,unit_price,channel,removal_reason
+SO-1003,2024-03-02,000103,CD-100,two,1299,Store,exact duplicate of row 5

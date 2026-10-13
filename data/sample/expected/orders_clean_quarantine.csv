@@ -1,0 +1,2 @@
+order_id,order_date,customer_id,sku,quantity,unit_price,channel,quarantine_reason
+,2024-03-05,000105,EF-300,1,7.5,Fax,[order_id_present] 'order_id' is missing; [channel_allowed] 'Fax' is not an allowed value

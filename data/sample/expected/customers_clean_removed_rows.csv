@@ -1,0 +1,2 @@
+customer_id,full_name,email,city,signup_date,annual_spend,status,postal_code,removal_reason
+000107,Grace Liu,grace.liu@example.com,Chicago,2024-06-01,780,active,60601,exact duplicate of row 9

@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=77"]  # 77+ is needed for the SPDX `license = "MIT"` field (PEP 639)
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-data-cleaning-toolkit"
+version = "0.1.0"
+description = "Rule-based, reported cleaning of CSV and XLSX files with pandas."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = ["pandas>=3.0,<4", "openpyxl>=3.1,<4"]
+
+[project.scripts]
+data-clean = "data_cleaning.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"

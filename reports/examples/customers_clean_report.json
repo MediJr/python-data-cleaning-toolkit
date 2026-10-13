@@ -1,0 +1,1788 @@
+{
+  "report_type": "cleaning",
+  "tool": {
+    "name": "python-data-cleaning-toolkit",
+    "version": "0.1.0"
+  },
+  "generated_at": "2026-10-13T09:24:29+00:00",
+  "execution": {
+    "status": "success",
+    "error": null,
+    "error_type": null
+  },
+  "data_quality": {
+    "status": "issues_found",
+    "summary": "Execution succeeded, but 11 type(s) of unresolved issue (22 occurrence(s)) remain. Review them before using the data.",
+    "note": "The data-quality status reflects only the configured rules and the toolkit's built-in checks. It is not a certification that the data is correct or complete.",
+    "unresolved_anomaly_types": 11,
+    "unresolved_occurrences": 22
+  },
+  "input": {
+    "path": "data/sample/customers_raw.csv",
+    "file_name": "customers_raw.csv",
+    "format": "csv",
+    "encoding": "utf-8",
+    "delimiter": ",",
+    "delimiter_detected": true,
+    "sheet": null,
+    "available_sheets": [],
+    "rows": 15,
+    "columns": 8,
+    "skipped_blank_rows": 0,
+    "formula_cells": 0,
+    "uncalculated_formula_cells": 0,
+    "warnings": [],
+    "sha256_before": "220b8b8dc8bdcb31e19587e6e5d1cf4d463402425d30070fc4d2117e208f5e7c",
+    "sha256_after": "220b8b8dc8bdcb31e19587e6e5d1cf4d463402425d30070fc4d2117e208f5e7c",
+    "unchanged": true
+  },
+  "outputs": {
+    "cleaned": {
+      "path": "reports/examples/customers_clean.csv",
+      "file_name": "customers_clean.csv",
+      "format": "csv",
+      "rows": 11,
+      "columns": 8,
+      "verified": true,
+      "warnings": []
+    },
+    "quarantine": {
+      "path": "reports/examples/customers_clean_quarantine.csv",
+      "file_name": "customers_clean_quarantine.csv",
+      "format": "csv",
+      "rows": 3,
+      "columns": 9,
+      "verified": true,
+      "warnings": []
+    },
+    "removed_rows": {
+      "path": "reports/examples/customers_clean_removed_rows.csv",
+      "file_name": "customers_clean_removed_rows.csv",
+      "format": "csv",
+      "rows": 1,
+      "columns": 9,
+      "verified": true,
+      "warnings": []
+    }
+  },
+  "planned_outputs": {
+    "cleaned": "reports/examples/customers_clean.csv",
+    "quarantine": "reports/examples/customers_clean_quarantine.csv",
+    "removed_rows": "reports/examples/customers_clean_removed_rows.csv",
+    "report_json": "reports/examples/customers_clean_report.json",
+    "report_markdown": "reports/examples/customers_clean_report.md"
+  },
+  "dimensions": {
+    "initial": {
+      "rows": 15,
+      "columns": 8
+    },
+    "final": {
+      "rows": 11,
+      "columns": 8
+    },
+    "rows_removed": 1,
+    "rows_quarantined": 3,
+    "blank_rows_skipped_on_import": 0
+  },
+  "missing_values": [
+    {
+      "column": "customer_id",
+      "original_column": "Customer ID",
+      "before": 1,
+      "after": 0
+    },
+    {
+      "column": "full_name",
+      "original_column": " Full Name ",
+      "before": 0,
+      "after": 0
+    },
+    {
+      "column": "email",
+      "original_column": "Email",
+      "before": 1,
+      "after": 1
+    },
+    {
+      "column": "city",
+      "original_column": "City",
+      "before": 0,
+      "after": 0
+    },
+    {
+      "column": "signup_date",
+      "original_column": "Signup Date",
+      "before": 0,
+      "after": 0
+    },
+    {
+      "column": "annual_spend",
+      "original_column": "Annual  Spend",
+      "before": 3,
+      "after": 3
+    },
+    {
+      "column": "status",
+      "original_column": "Status",
+      "before": 0,
+      "after": 0
+    },
+    {
+      "column": "postal_code",
+      "original_column": "Postal Code",
+      "before": 0,
+      "after": 0
+    }
+  ],
+  "columns": {
+    "mapping": {
+      "Customer ID": "customer_id",
+      " Full Name ": "full_name",
+      "Email": "email",
+      "City": "city",
+      "Signup Date": "signup_date",
+      "Annual  Spend": "annual_spend",
+      "Status": "status",
+      "Postal Code": "postal_code"
+    },
+    "renamed": {
+      "Customer ID": "customer_id",
+      " Full Name ": "full_name",
+      "Email": "email",
+      "City": "city",
+      "Signup Date": "signup_date",
+      "Annual  Spend": "annual_spend",
+      "Status": "status",
+      "Postal Code": "postal_code"
+    },
+    "cells_differing_from_input": {
+      "full_name": 1,
+      "email": 1,
+      "city": 4,
+      "signup_date": 2,
+      "annual_spend": 5,
+      "status": 2
+    },
+    "changes_per_column_summed_over_steps": {
+      "annual_spend": 5,
+      "full_name": 1,
+      "city": 5,
+      "email": 1,
+      "status": 2,
+      "signup_date": 2
+    }
+  },
+  "operations": [
+    {
+      "step": "normalize_column_names",
+      "description": "Column names: strip=True, collapse_whitespace=True, style=snake_case; 8 renamed",
+      "cells_changed": 0,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "standardize_missing",
+      "description": "Missing values: empty and whitespace-only cells plus tokens ['N/A', 'NULL'] marked missing (no imputation)",
+      "cells_changed": 3,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "normalize_text",
+      "description": "Text trim, collapse spaces on ['full_name', 'city', 'status']",
+      "cells_changed": 2,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "normalize_text",
+      "description": "Text trim, lower case on ['email']",
+      "cells_changed": 1,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "map_categories",
+      "description": "Category mapping on 'city' (7 explicit label(s), case_insensitive=True)",
+      "cells_changed": 4,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "map_categories",
+      "description": "Category mapping on 'status' (3 explicit label(s), case_insensitive=True)",
+      "cells_changed": 2,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "parse_dates",
+      "description": "Dates in 'signup_date': formats ['%Y-%m-%d', '%d/%m/%Y', '%m/%d/%Y'] -> %Y-%m-%d; failures kept",
+      "cells_changed": 2,
+      "rows_removed": 0,
+      "issues": 3
+    },
+    {
+      "step": "parse_numbers",
+      "description": "Numbers in 'annual_spend': decimal '.', thousands ',', strip '$'; failures kept",
+      "cells_changed": 2,
+      "rows_removed": 0,
+      "issues": 2
+    },
+    {
+      "step": "exact_duplicates",
+      "description": "Exact duplicates: 1 detected, 1 removed (first occurrence kept)",
+      "cells_changed": 0,
+      "rows_removed": 1,
+      "issues": 0
+    },
+    {
+      "step": "key_duplicates",
+      "description": "Key duplicates on ['customer_id']: 1 group(s), kept (removal not requested)",
+      "cells_changed": 0,
+      "rows_removed": 0,
+      "issues": 0
+    }
+  ],
+  "conversion_failures": [
+    {
+      "step": "parse_dates",
+      "source_row": 4,
+      "column": "signup_date",
+      "value": "03/04/2024",
+      "reason": "ambiguous date: %d/%m/%Y -> 2024-04-03, %m/%d/%Y -> 2024-03-04",
+      "in_cleaned_output": true
+    },
+    {
+      "step": "parse_dates",
+      "source_row": 6,
+      "column": "signup_date",
+      "value": "2024-02-30",
+      "reason": "does not match any configured date format (or is not a real calendar date)",
+      "in_cleaned_output": true
+    },
+    {
+      "step": "parse_dates",
+      "source_row": 12,
+      "column": "signup_date",
+      "value": "yesterday",
+      "reason": "does not match any configured date format (or is not a real calendar date)",
+      "in_cleaned_output": false
+    },
+    {
+      "step": "parse_numbers",
+      "source_row": 5,
+      "column": "annual_spend",
+      "value": "1.234,50",
+      "reason": "not a number in the configured format",
+      "in_cleaned_output": true
+    },
+    {
+      "step": "parse_numbers",
+      "source_row": 12,
+      "column": "annual_spend",
+      "value": "twelve hundred",
+      "reason": "not a number in the configured format",
+      "in_cleaned_output": false
+    }
+  ],
+  "duplicates": {
+    "exact": {
+      "duplicate_rows": 1,
+      "groups": [
+        {
+          "source_rows": [
+            9,
+            10
+          ]
+        }
+      ],
+      "removed": 1
+    },
+    "keys": {
+      "groups": [
+        {
+          "key": {
+            "customer_id": "000106"
+          },
+          "source_rows": [
+            7,
+            8
+          ],
+          "identical": false,
+          "differing_columns": [
+            "email",
+            "signup_date",
+            "annual_spend"
+          ]
+        }
+      ],
+      "duplicate_key_groups": 1,
+      "rows_in_groups": 2,
+      "groups_with_conflicting_values": 1,
+      "rows_with_missing_key": 1,
+      "removed": 0,
+      "rule": {
+        "keys": [
+          "customer_id"
+        ],
+        "remove": false,
+        "keep": "first"
+      }
+    }
+  },
+  "validation": {
+    "passed": false,
+    "rules": [
+      {
+        "id": "required_columns",
+        "rule": "required_columns",
+        "label": "required_columns(customer_id, email, signup_date)",
+        "columns": [
+          "customer_id",
+          "email",
+          "signup_date"
+        ],
+        "action": "report",
+        "status": "passed",
+        "failures": 0
+      },
+      {
+        "id": "id_present",
+        "rule": "not_null",
+        "label": "not_null(customer_id)",
+        "columns": [
+          "customer_id"
+        ],
+        "action": "quarantine",
+        "status": "failed",
+        "failures": 1
+      },
+      {
+        "id": "id_unique",
+        "rule": "unique",
+        "label": "unique(customer_id)",
+        "columns": [
+          "customer_id"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 2
+      },
+      {
+        "id": "email_present",
+        "rule": "not_null",
+        "label": "not_null(email)",
+        "columns": [
+          "email"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 1
+      },
+      {
+        "id": "email_format",
+        "rule": "pattern",
+        "label": "pattern(email)",
+        "columns": [
+          "email"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 1
+      },
+      {
+        "id": "status_allowed",
+        "rule": "allowed_values",
+        "label": "allowed_values(status)",
+        "columns": [
+          "status"
+        ],
+        "action": "quarantine",
+        "status": "failed",
+        "failures": 2
+      },
+      {
+        "id": "signup_is_iso_date",
+        "rule": "type",
+        "label": "type(signup_date)",
+        "columns": [
+          "signup_date"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 3
+      },
+      {
+        "id": "signup_in_range",
+        "rule": "date_range",
+        "label": "date_range(signup_date)",
+        "columns": [
+          "signup_date"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 4
+      },
+      {
+        "id": "spend_non_negative",
+        "rule": "range",
+        "label": "range(annual_spend)",
+        "columns": [
+          "annual_spend"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 3
+      },
+      {
+        "id": "postal_code_5_digits",
+        "rule": "pattern",
+        "label": "pattern(postal_code)",
+        "columns": [
+          "postal_code"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 1
+      }
+    ],
+    "issue_count": 18,
+    "rows_with_issues": 9,
+    "issues": [
+      {
+        "rule_id": "id_present",
+        "rule": "not_null",
+        "column": "customer_id",
+        "source_row": 11,
+        "value": null,
+        "message": "'customer_id' is missing",
+        "action": "quarantine"
+      },
+      {
+        "rule_id": "id_unique",
+        "rule": "unique",
+        "column": "customer_id",
+        "source_row": 7,
+        "value": {
+          "customer_id": "000106"
+        },
+        "message": "value(s) {'customer_id': '000106'} are not unique",
+        "action": "report"
+      },
+      {
+        "rule_id": "id_unique",
+        "rule": "unique",
+        "column": "customer_id",
+        "source_row": 8,
+        "value": {
+          "customer_id": "000106"
+        },
+        "message": "value(s) {'customer_id': '000106'} are not unique",
+        "action": "report"
+      },
+      {
+        "rule_id": "email_present",
+        "rule": "not_null",
+        "column": "email",
+        "source_row": 7,
+        "value": null,
+        "message": "'email' is missing",
+        "action": "report"
+      },
+      {
+        "rule_id": "email_format",
+        "rule": "pattern",
+        "column": "email",
+        "source_row": 12,
+        "value": "ivan.petrov@example",
+        "message": "'ivan.petrov@example' does not match the pattern [^@\\s]+@[^@\\s]+\\.[^@\\s]+",
+        "action": "report"
+      },
+      {
+        "rule_id": "status_allowed",
+        "rule": "allowed_values",
+        "column": "status",
+        "source_row": 12,
+        "value": "on hold",
+        "message": "'on hold' is not an allowed value",
+        "action": "quarantine"
+      },
+      {
+        "rule_id": "status_allowed",
+        "rule": "allowed_values",
+        "column": "status",
+        "source_row": 15,
+        "value": "unknown",
+        "message": "'unknown' is not an allowed value",
+        "action": "quarantine"
+      },
+      {
+        "rule_id": "signup_is_iso_date",
+        "rule": "type",
+        "column": "signup_date",
+        "source_row": 4,
+        "value": "03/04/2024",
+        "message": "'03/04/2024' is not a date in format %Y-%m-%d",
+        "action": "report"
+      },
+      {
+        "rule_id": "signup_is_iso_date",
+        "rule": "type",
+        "column": "signup_date",
+        "source_row": 6,
+        "value": "2024-02-30",
+        "message": "'2024-02-30' is not a date in format %Y-%m-%d",
+        "action": "report"
+      },
+      {
+        "rule_id": "signup_is_iso_date",
+        "rule": "type",
+        "column": "signup_date",
+        "source_row": 12,
+        "value": "yesterday",
+        "message": "'yesterday' is not a date in format %Y-%m-%d",
+        "action": "report"
+      },
+      {
+        "rule_id": "signup_in_range",
+        "rule": "date_range",
+        "column": "signup_date",
+        "source_row": 4,
+        "value": "03/04/2024",
+        "message": "'03/04/2024' is not a date in format %Y-%m-%d; range cannot be checked",
+        "action": "report"
+      },
+      {
+        "rule_id": "signup_in_range",
+        "rule": "date_range",
+        "column": "signup_date",
+        "source_row": 6,
+        "value": "2024-02-30",
+        "message": "'2024-02-30' is not a date in format %Y-%m-%d; range cannot be checked",
+        "action": "report"
+      },
+      {
+        "rule_id": "signup_in_range",
+        "rule": "date_range",
+        "column": "signup_date",
+        "source_row": 12,
+        "value": "yesterday",
+        "message": "'yesterday' is not a date in format %Y-%m-%d; range cannot be checked",
+        "action": "report"
+      },
+      {
+        "rule_id": "signup_in_range",
+        "rule": "date_range",
+        "column": "signup_date",
+        "source_row": 13,
+        "value": "2031-01-01",
+        "message": "2031-01-01 is after 2026-12-31",
+        "action": "report"
+      },
+      {
+        "rule_id": "spend_non_negative",
+        "rule": "range",
+        "column": "annual_spend",
+        "source_row": 5,
+        "value": "1.234,50",
+        "message": "'1.234,50' is not a number; range cannot be checked",
+        "action": "report"
+      },
+      {
+        "rule_id": "spend_non_negative",
+        "rule": "range",
+        "column": "annual_spend",
+        "source_row": 6,
+        "value": "-50",
+        "message": "-50 is below the minimum 0",
+        "action": "report"
+      },
+      {
+        "rule_id": "spend_non_negative",
+        "rule": "range",
+        "column": "annual_spend",
+        "source_row": 12,
+        "value": "twelve hundred",
+        "message": "'twelve hundred' is not a number; range cannot be checked",
+        "action": "report"
+      },
+      {
+        "rule_id": "postal_code_5_digits",
+        "rule": "pattern",
+        "column": "postal_code",
+        "source_row": 6,
+        "value": "2108",
+        "message": "'2108' does not match the pattern \\d{5}",
+        "action": "report"
+      }
+    ]
+  },
+  "anomalies": [
+    {
+      "type": "conversion_failure",
+      "count": 3,
+      "description": "3 date/number value(s) in the cleaned output could not be converted (2 more in rows that were removed or quarantined) (see conversion failures)."
+    },
+    {
+      "type": "key_duplicates_kept",
+      "count": 1,
+      "description": "1 key value(s) in ['customer_id'] appear on several rows (1 with conflicting values); rows were kept."
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "id_present",
+      "count": 1,
+      "description": "Rule id_present (not_null(customer_id)): 1 failure(s), action = quarantine"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "id_unique",
+      "count": 2,
+      "description": "Rule id_unique (unique(customer_id)): 2 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "email_present",
+      "count": 1,
+      "description": "Rule email_present (not_null(email)): 1 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "email_format",
+      "count": 1,
+      "description": "Rule email_format (pattern(email)): 1 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "status_allowed",
+      "count": 2,
+      "description": "Rule status_allowed (allowed_values(status)): 2 failure(s), action = quarantine"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "signup_is_iso_date",
+      "count": 3,
+      "description": "Rule signup_is_iso_date (type(signup_date)): 3 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "signup_in_range",
+      "count": 4,
+      "description": "Rule signup_in_range (date_range(signup_date)): 4 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "spend_non_negative",
+      "count": 3,
+      "description": "Rule spend_non_negative (range(annual_spend)): 3 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "postal_code_5_digits",
+      "count": 1,
+      "description": "Rule postal_code_5_digits (pattern(postal_code)): 1 failure(s), action = report"
+    }
+  ],
+  "warnings": [
+    "Column 'city': 1 distinct value(s) are not covered by the category mapping and were left unchanged (e.g. 'Bostn').",
+    "Column 'status': 2 distinct value(s) are not covered by the category mapping and were left unchanged (e.g. 'on hold', 'unknown').",
+    "Column 'signup_date': 3 date value(s) could not be converted and were left unchanged.",
+    "Column 'annual_spend': 2 value(s) could not be converted and were left unchanged; the column is kept as text.",
+    "1 row(s) have a missing value in ['customer_id'] and were excluded from key-duplicate checks.",
+    "1 key value(s) in ['customer_id'] appear on more than one row (1 with differing values in other columns); rows were kept (removal not requested)."
+  ],
+  "steps": [
+    {
+      "step": "normalize_column_names",
+      "rule": {
+        "strip": true,
+        "collapse_whitespace": true,
+        "style": "snake_case",
+        "rename": {}
+      },
+      "cells_changed": {},
+      "total_cells_changed": 0,
+      "rows_removed": [],
+      "examples": {},
+      "issues": [],
+      "warnings": [],
+      "details": {
+        "mapping": {
+          "Customer ID": "customer_id",
+          " Full Name ": "full_name",
+          "Email": "email",
+          "City": "city",
+          "Signup Date": "signup_date",
+          "Annual  Spend": "annual_spend",
+          "Status": "status",
+          "Postal Code": "postal_code"
+        },
+        "renamed": {
+          "Customer ID": "customer_id",
+          " Full Name ": "full_name",
+          "Email": "email",
+          "City": "city",
+          "Signup Date": "signup_date",
+          "Annual  Spend": "annual_spend",
+          "Status": "status",
+          "Postal Code": "postal_code"
+        }
+      }
+    },
+    {
+      "step": "standardize_missing",
+      "rule": {
+        "tokens": [
+          "N/A",
+          "NULL"
+        ],
+        "case_sensitive": false,
+        "whitespace_as_missing": true,
+        "columns": "all"
+      },
+      "cells_changed": {
+        "annual_spend": 3
+      },
+      "total_cells_changed": 3,
+      "rows_removed": [],
+      "examples": {
+        "annual_spend": [
+          {
+            "source_row": 4,
+            "before": "N/A",
+            "after": null
+          },
+          {
+            "source_row": 13,
+            "before": "NULL",
+            "after": null
+          },
+          {
+            "source_row": 16,
+            "before": "   ",
+            "after": null
+          }
+        ]
+      },
+      "issues": [],
+      "warnings": [],
+      "details": {
+        "by_column": {
+          "customer_id": {
+            "empty": 1,
+            "whitespace_only": 0,
+            "missing_after": 1
+          },
+          "full_name": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          },
+          "email": {
+            "empty": 1,
+            "whitespace_only": 0,
+            "missing_after": 1
+          },
+          "city": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          },
+          "signup_date": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          },
+          "annual_spend": {
+            "empty": 0,
+            "whitespace_only": 1,
+            "token:N/A": 1,
+            "token:NULL": 1,
+            "missing_after": 3
+          },
+          "status": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          },
+          "postal_code": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          }
+        }
+      }
+    },
+    {
+      "step": "normalize_text",
+      "rule": {
+        "columns": [
+          "full_name",
+          "city",
+          "status"
+        ],
+        "strip": true,
+        "collapse_whitespace": true,
+        "case": null
+      },
+      "cells_changed": {
+        "full_name": 1,
+        "city": 1
+      },
+      "total_cells_changed": 2,
+      "rows_removed": [],
+      "examples": {
+        "full_name": [
+          {
+            "source_row": 3,
+            "before": "  ben   okafor ",
+            "after": "ben okafor"
+          }
+        ],
+        "city": [
+          {
+            "source_row": 3,
+            "before": " new york",
+            "after": "new york"
+          }
+        ]
+      },
+      "issues": [],
+      "warnings": [],
+      "details": {}
+    },
+    {
+      "step": "normalize_text",
+      "rule": {
+        "columns": [
+          "email"
+        ],
+        "strip": true,
+        "collapse_whitespace": false,
+        "case": "lower"
+      },
+      "cells_changed": {
+        "email": 1
+      },
+      "total_cells_changed": 1,
+      "rows_removed": [],
+      "examples": {
+        "email": [
+          {
+            "source_row": 3,
+            "before": "BEN.OKAFOR@EXAMPLE.COM",
+            "after": "ben.okafor@example.com"
+          }
+        ]
+      },
+      "issues": [],
+      "warnings": [],
+      "details": {}
+    },
+    {
+      "step": "map_categories",
+      "rule": {
+        "column": "city",
+        "mapping": {
+          "new york": "New York",
+          "nyc": "New York",
+          "boston": "Boston",
+          "chicago": "Chicago",
+          "seattle": "Seattle",
+          "austin": "Austin",
+          "denver": "Denver"
+        },
+        "case_insensitive": true
+      },
+      "cells_changed": {
+        "city": 4
+      },
+      "total_cells_changed": 4,
+      "rows_removed": [],
+      "examples": {
+        "city": [
+          {
+            "source_row": 3,
+            "before": "new york",
+            "after": "New York"
+          },
+          {
+            "source_row": 4,
+            "before": "NEW YORK",
+            "after": "New York"
+          },
+          {
+            "source_row": 5,
+            "before": "NYC",
+            "after": "New York"
+          },
+          {
+            "source_row": 13,
+            "before": "seattle",
+            "after": "Seattle"
+          }
+        ]
+      },
+      "issues": [],
+      "warnings": [
+        "Column 'city': 1 distinct value(s) are not covered by the category mapping and were left unchanged (e.g. 'Bostn')."
+      ],
+      "details": {
+        "replacements": [
+          {
+            "from": "new york",
+            "to": "New York",
+            "count": 1
+          },
+          {
+            "from": "NEW YORK",
+            "to": "New York",
+            "count": 1
+          },
+          {
+            "from": "NYC",
+            "to": "New York",
+            "count": 1
+          },
+          {
+            "from": "seattle",
+            "to": "Seattle",
+            "count": 1
+          }
+        ],
+        "unmapped_values": {
+          "Bostn": 1
+        }
+      }
+    },
+    {
+      "step": "map_categories",
+      "rule": {
+        "column": "status",
+        "mapping": {
+          "active": "active",
+          "inactive": "inactive",
+          "closed": "closed"
+        },
+        "case_insensitive": true
+      },
+      "cells_changed": {
+        "status": 2
+      },
+      "total_cells_changed": 2,
+      "rows_removed": [],
+      "examples": {
+        "status": [
+          {
+            "source_row": 3,
+            "before": "Active",
+            "after": "active"
+          },
+          {
+            "source_row": 5,
+            "before": "ACTIVE",
+            "after": "active"
+          }
+        ]
+      },
+      "issues": [],
+      "warnings": [
+        "Column 'status': 2 distinct value(s) are not covered by the category mapping and were left unchanged (e.g. 'on hold', 'unknown')."
+      ],
+      "details": {
+        "replacements": [
+          {
+            "from": "Active",
+            "to": "active",
+            "count": 1
+          },
+          {
+            "from": "ACTIVE",
+            "to": "active",
+            "count": 1
+          }
+        ],
+        "unmapped_values": {
+          "on hold": 1,
+          "unknown": 1
+        }
+      }
+    },
+    {
+      "step": "parse_dates",
+      "rule": {
+        "column": "signup_date",
+        "formats": [
+          "%Y-%m-%d",
+          "%d/%m/%Y",
+          "%m/%d/%Y"
+        ],
+        "output_format": "%Y-%m-%d",
+        "on_error": "keep"
+      },
+      "cells_changed": {
+        "signup_date": 2
+      },
+      "total_cells_changed": 2,
+      "rows_removed": [],
+      "examples": {
+        "signup_date": [
+          {
+            "source_row": 3,
+            "before": "15/03/2024",
+            "after": "2024-03-15"
+          },
+          {
+            "source_row": 5,
+            "before": "03/15/2024",
+            "after": "2024-03-15"
+          }
+        ]
+      },
+      "issues": [
+        {
+          "source_row": 4,
+          "column": "signup_date",
+          "value": "03/04/2024",
+          "reason": "ambiguous date: %d/%m/%Y -> 2024-04-03, %m/%d/%Y -> 2024-03-04"
+        },
+        {
+          "source_row": 6,
+          "column": "signup_date",
+          "value": "2024-02-30",
+          "reason": "does not match any configured date format (or is not a real calendar date)"
+        },
+        {
+          "source_row": 12,
+          "column": "signup_date",
+          "value": "yesterday",
+          "reason": "does not match any configured date format (or is not a real calendar date)"
+        }
+      ],
+      "warnings": [
+        "Column 'signup_date': 3 date value(s) could not be converted and were left unchanged."
+      ],
+      "details": {
+        "converted": 12,
+        "invalid": 2,
+        "ambiguous": 1
+      }
+    },
+    {
+      "step": "parse_numbers",
+      "rule": {
+        "column": "annual_spend",
+        "decimal": ".",
+        "thousands": ",",
+        "strip_chars": "$",
+        "allow_leading_zeros": false,
+        "on_error": "keep"
+      },
+      "cells_changed": {
+        "annual_spend": 2
+      },
+      "total_cells_changed": 2,
+      "rows_removed": [],
+      "examples": {
+        "annual_spend": [
+          {
+            "source_row": 2,
+            "before": "1,200.50",
+            "after": "1200.5"
+          },
+          {
+            "source_row": 3,
+            "before": "$950",
+            "after": "950"
+          }
+        ]
+      },
+      "issues": [
+        {
+          "source_row": 5,
+          "column": "annual_spend",
+          "value": "1.234,50",
+          "reason": "not a number in the configured format"
+        },
+        {
+          "source_row": 12,
+          "column": "annual_spend",
+          "value": "twelve hundred",
+          "reason": "not a number in the configured format"
+        }
+      ],
+      "warnings": [
+        "Column 'annual_spend': 2 value(s) could not be converted and were left unchanged; the column is kept as text."
+      ],
+      "details": {
+        "converted": 10,
+        "failed": 2,
+        "result_dtype": "string"
+      }
+    },
+    {
+      "step": "exact_duplicates",
+      "rule": {
+        "remove": true,
+        "keep": "first occurrence"
+      },
+      "cells_changed": {},
+      "total_cells_changed": 0,
+      "rows_removed": [
+        10
+      ],
+      "examples": {},
+      "issues": [],
+      "warnings": [],
+      "details": {
+        "duplicate_rows": 1,
+        "groups": [
+          {
+            "source_rows": [
+              9,
+              10
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "step": "key_duplicates",
+      "rule": {
+        "keys": [
+          "customer_id"
+        ],
+        "remove": false,
+        "keep": "first"
+      },
+      "cells_changed": {},
+      "total_cells_changed": 0,
+      "rows_removed": [],
+      "examples": {},
+      "issues": [],
+      "warnings": [
+        "1 row(s) have a missing value in ['customer_id'] and were excluded from key-duplicate checks.",
+        "1 key value(s) in ['customer_id'] appear on more than one row (1 with differing values in other columns); rows were kept (removal not requested)."
+      ],
+      "details": {
+        "groups": [
+          {
+            "key": {
+              "customer_id": "000106"
+            },
+            "source_rows": [
+              7,
+              8
+            ],
+            "identical": false,
+            "differing_columns": [
+              "email",
+              "signup_date",
+              "annual_spend"
+            ]
+          }
+        ],
+        "duplicate_key_groups": 1,
+        "rows_in_groups": 2,
+        "groups_with_conflicting_values": 1,
+        "rows_with_missing_key": 1
+      }
+    }
+  ],
+  "configuration": {
+    "description": "Cleaning rules for data/sample/customers_raw.csv (synthetic). Signup dates come from two source systems, one using DD/MM/YYYY and one MM/DD/YYYY, so both formats are listed: values that fit both are reported as ambiguous instead of guessed.",
+    "input": {
+      "sheet": null,
+      "encoding": null,
+      "delimiter": null
+    },
+    "output": {
+      "csv_encoding": "utf-8",
+      "csv_delimiter": ",",
+      "sheet_name": "cleaned"
+    },
+    "column_names": {
+      "strip": true,
+      "collapse_whitespace": true,
+      "style": "snake_case",
+      "rename": {}
+    },
+    "missing_values": {
+      "tokens": [
+        "N/A",
+        "NULL"
+      ],
+      "case_sensitive": false,
+      "whitespace_as_missing": true
+    },
+    "text": [
+      {
+        "strip": true,
+        "collapse_whitespace": true,
+        "case": null,
+        "columns": [
+          "full_name",
+          "city",
+          "status"
+        ]
+      },
+      {
+        "strip": true,
+        "collapse_whitespace": false,
+        "case": "lower",
+        "columns": [
+          "email"
+        ]
+      }
+    ],
+    "categories": [
+      {
+        "case_insensitive": true,
+        "column": "city",
+        "mapping": {
+          "new york": "New York",
+          "nyc": "New York",
+          "boston": "Boston",
+          "chicago": "Chicago",
+          "seattle": "Seattle",
+          "austin": "Austin",
+          "denver": "Denver"
+        }
+      },
+      {
+        "case_insensitive": true,
+        "column": "status",
+        "mapping": {
+          "active": "active",
+          "inactive": "inactive",
+          "closed": "closed"
+        }
+      }
+    ],
+    "dates": [
+      {
+        "output_format": "%Y-%m-%d",
+        "on_error": "keep",
+        "column": "signup_date",
+        "formats": [
+          "%Y-%m-%d",
+          "%d/%m/%Y",
+          "%m/%d/%Y"
+        ]
+      }
+    ],
+    "numbers": [
+      {
+        "decimal": ".",
+        "thousands": ",",
+        "strip_chars": "$",
+        "allow_leading_zeros": false,
+        "on_error": "keep",
+        "column": "annual_spend"
+      }
+    ],
+    "duplicates": {
+      "remove_exact": true,
+      "key_columns": [
+        "customer_id"
+      ],
+      "remove_key_duplicates": false,
+      "keep": "first"
+    },
+    "validation": [
+      {
+        "id": "required_columns",
+        "rule": "required_columns",
+        "columns": [
+          "customer_id",
+          "email",
+          "signup_date"
+        ]
+      },
+      {
+        "id": "id_present",
+        "rule": "not_null",
+        "column": "customer_id",
+        "action": "quarantine"
+      },
+      {
+        "id": "id_unique",
+        "rule": "unique",
+        "columns": [
+          "customer_id"
+        ]
+      },
+      {
+        "id": "email_present",
+        "rule": "not_null",
+        "column": "email"
+      },
+      {
+        "id": "email_format",
+        "rule": "pattern",
+        "column": "email",
+        "regex": "[^@\\s]+@[^@\\s]+\\.[^@\\s]+"
+      },
+      {
+        "id": "status_allowed",
+        "rule": "allowed_values",
+        "column": "status",
+        "values": [
+          "active",
+          "inactive",
+          "closed"
+        ],
+        "action": "quarantine"
+      },
+      {
+        "id": "signup_is_iso_date",
+        "rule": "type",
+        "column": "signup_date",
+        "expected": "date"
+      },
+      {
+        "id": "signup_in_range",
+        "rule": "date_range",
+        "column": "signup_date",
+        "min": "2015-01-01",
+        "max": "2026-12-31"
+      },
+      {
+        "id": "spend_non_negative",
+        "rule": "range",
+        "column": "annual_spend",
+        "min": 0
+      },
+      {
+        "id": "postal_code_5_digits",
+        "rule": "pattern",
+        "column": "postal_code",
+        "regex": "\\d{5}"
+      }
+    ]
+  },
+  "overrides": {
+    "overwrite": true
+  },
+  "profile_before": {
+    "rows": 15,
+    "columns": 8,
+    "column_names": [
+      "Customer ID",
+      " Full Name ",
+      "Email",
+      "City",
+      "Signup Date",
+      "Annual  Spend",
+      "Status",
+      "Postal Code"
+    ],
+    "missing_cells": 5,
+    "missing_by_column": {
+      "Customer ID": 1,
+      " Full Name ": 0,
+      "Email": 1,
+      "City": 0,
+      "Signup Date": 0,
+      "Annual  Spend": 3,
+      "Status": 0,
+      "Postal Code": 0
+    },
+    "fully_missing_rows": 0,
+    "exact_duplicate_rows": 1,
+    "exact_duplicate_groups": [
+      [
+        9,
+        10
+      ]
+    ],
+    "column_profiles": {
+      "Customer ID": {
+        "dtype": "string",
+        "non_missing": 14,
+        "missing": 1,
+        "missing_pct": 6.67,
+        "distinct": 12,
+        "value_kinds": {
+          "integer": 14
+        },
+        "inferred_type": "integer",
+        "leading_zero_values": 14,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "000101",
+          "000102",
+          "000103",
+          "000104",
+          "000105"
+        ]
+      },
+      " Full Name ": {
+        "dtype": "string",
+        "non_missing": 15,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 13,
+        "value_kinds": {
+          "text": 15
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 1,
+        "values_with_repeated_internal_spaces": 1,
+        "sample_values": [
+          "Ana Kovač",
+          "  ben   okafor ",
+          "Chloé Martin",
+          "Dev Patel",
+          "Elif Demir"
+        ]
+      },
+      "Email": {
+        "dtype": "string",
+        "non_missing": 14,
+        "missing": 1,
+        "missing_pct": 6.67,
+        "distinct": 13,
+        "value_kinds": {
+          "text": 14
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "ana.kovac@example.com",
+          "BEN.OKAFOR@EXAMPLE.COM",
+          "chloe.martin@example.com",
+          "dev.patel@example.com",
+          "elif.demir@example.com"
+        ]
+      },
+      "City": {
+        "dtype": "string",
+        "non_missing": 15,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 10,
+        "value_kinds": {
+          "text": 15
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 1,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "New York",
+          " new york",
+          "NEW YORK",
+          "NYC",
+          "Boston"
+        ]
+      },
+      "Signup Date": {
+        "dtype": "string",
+        "non_missing": 15,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 14,
+        "value_kinds": {
+          "date-like": 14,
+          "text": 1
+        },
+        "inferred_type": "mixed",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 1,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "2024-01-15",
+          "15/03/2024",
+          "03/04/2024",
+          "03/15/2024",
+          "2024-02-30"
+        ]
+      },
+      "Annual  Spend": {
+        "dtype": "string",
+        "non_missing": 12,
+        "missing": 3,
+        "missing_pct": 20.0,
+        "distinct": 11,
+        "value_kinds": {
+          "integer": 8,
+          "numeric-like": 2,
+          "text": 2
+        },
+        "inferred_type": "mixed",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "1,200.50",
+          "$950",
+          "1.234,50",
+          "-50",
+          "300"
+        ]
+      },
+      "Status": {
+        "dtype": "string",
+        "non_missing": 15,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 7,
+        "value_kinds": {
+          "text": 15
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "active",
+          "Active",
+          "inactive",
+          "ACTIVE",
+          "closed"
+        ]
+      },
+      "Postal Code": {
+        "dtype": "string",
+        "non_missing": 15,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 13,
+        "value_kinds": {
+          "integer": 15
+        },
+        "inferred_type": "integer",
+        "leading_zero_values": 4,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "02108",
+          "10001",
+          "00501",
+          "30301",
+          "2108"
+        ]
+      }
+    }
+  },
+  "profile_after": {
+    "rows": 11,
+    "columns": 8,
+    "column_names": [
+      "customer_id",
+      "full_name",
+      "email",
+      "city",
+      "signup_date",
+      "annual_spend",
+      "status",
+      "postal_code"
+    ],
+    "missing_cells": 4,
+    "missing_by_column": {
+      "customer_id": 0,
+      "full_name": 0,
+      "email": 1,
+      "city": 0,
+      "signup_date": 0,
+      "annual_spend": 3,
+      "status": 0,
+      "postal_code": 0
+    },
+    "fully_missing_rows": 0,
+    "exact_duplicate_rows": 0,
+    "exact_duplicate_groups": [],
+    "column_profiles": {
+      "customer_id": {
+        "dtype": "string",
+        "non_missing": 11,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 10,
+        "value_kinds": {
+          "integer": 11
+        },
+        "inferred_type": "integer",
+        "leading_zero_values": 11,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "000101",
+          "000102",
+          "000103",
+          "000104",
+          "000105"
+        ]
+      },
+      "full_name": {
+        "dtype": "string",
+        "non_missing": 11,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 10,
+        "value_kinds": {
+          "text": 11
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "Ana Kovač",
+          "ben okafor",
+          "Chloé Martin",
+          "Dev Patel",
+          "Elif Demir"
+        ]
+      },
+      "email": {
+        "dtype": "string",
+        "non_missing": 10,
+        "missing": 1,
+        "missing_pct": 9.09,
+        "distinct": 10,
+        "value_kinds": {
+          "text": 10
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "ana.kovac@example.com",
+          "ben.okafor@example.com",
+          "chloe.martin@example.com",
+          "dev.patel@example.com",
+          "elif.demir@example.com"
+        ]
+      },
+      "city": {
+        "dtype": "string",
+        "non_missing": 11,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 6,
+        "value_kinds": {
+          "text": 11
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "New York",
+          "Boston",
+          "Chicago",
+          "Seattle",
+          "Austin"
+        ]
+      },
+      "signup_date": {
+        "dtype": "string",
+        "non_missing": 11,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 10,
+        "value_kinds": {
+          "date-like": 11
+        },
+        "inferred_type": "date-like",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 1,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "2024-01-15",
+          "2024-03-15",
+          "03/04/2024",
+          "2024-02-30",
+          "2024-05-20"
+        ]
+      },
+      "annual_spend": {
+        "dtype": "string",
+        "non_missing": 8,
+        "missing": 3,
+        "missing_pct": 27.27,
+        "distinct": 8,
+        "value_kinds": {
+          "integer": 6,
+          "numeric-like": 2
+        },
+        "inferred_type": "numeric-like",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "1200.5",
+          "950",
+          "1.234,50",
+          "-50",
+          "300"
+        ]
+      },
+      "status": {
+        "dtype": "string",
+        "non_missing": 11,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 3,
+        "value_kinds": {
+          "text": 11
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "active",
+          "inactive",
+          "closed"
+        ]
+      },
+      "postal_code": {
+        "dtype": "string",
+        "non_missing": 11,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 10,
+        "value_kinds": {
+          "integer": 11
+        },
+        "inferred_type": "integer",
+        "leading_zero_values": 4,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "02108",
+          "10001",
+          "00501",
+          "30301",
+          "2108"
+        ]
+      }
+    }
+  }
+}

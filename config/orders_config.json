@@ -1,0 +1,26 @@
+{
+  "description": "Cleaning rules for the 'Orders' sheet of data/sample/orders_raw.xlsx (synthetic). Order lines are identified by order ID + SKU.",
+  "column_names": {"style": "snake_case"},
+  "text": [
+    {"columns": ["sku"], "strip": true, "case": "upper"},
+    {"columns": ["channel"], "strip": true}
+  ],
+  "categories": [
+    {"column": "channel", "case_insensitive": true, "mapping": {"online": "Online", "store": "Store", "phone": "Phone"}}
+  ],
+  "dates": [
+    {"column": "order_date", "formats": ["%Y-%m-%d", "%d.%m.%Y"]}
+  ],
+  "numbers": [
+    {"column": "quantity"},
+    {"column": "unit_price", "decimal": "."}
+  ],
+  "duplicates": {"remove_exact": true, "key_columns": ["order_id", "sku"]},
+  "validation": [
+    {"id": "order_id_present", "rule": "not_null", "column": "order_id", "action": "quarantine"},
+    {"id": "customer_id_6_digits", "rule": "pattern", "column": "customer_id", "regex": "\\d{6}"},
+    {"id": "quantity_at_least_1", "rule": "range", "column": "quantity", "min": 1},
+    {"id": "channel_allowed", "rule": "allowed_values", "column": "channel", "values": ["Online", "Store", "Phone"], "action": "quarantine"},
+    {"id": "order_date_is_iso_date", "rule": "type", "column": "order_date", "expected": "date"}
+  ]
+}

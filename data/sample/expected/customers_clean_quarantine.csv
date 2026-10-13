@@ -1,0 +1,4 @@
+customer_id,full_name,email,city,signup_date,annual_spend,status,postal_code,quarantine_reason
+,Hana Sato,hana.sato@example.com,Chicago,2024-07-04,410,active,60602,[id_present] 'customer_id' is missing
+000109,Ivan Petrov,ivan.petrov@example,Seattle,yesterday,twelve hundred,on hold,98101,[status_allowed] 'on hold' is not an allowed value
+000112,Lena Novak,lena.novak@example.com,Austin,2023-12-01,150,unknown,73344,[status_allowed] 'unknown' is not an allowed value

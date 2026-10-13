@@ -1,0 +1,1383 @@
+{
+  "report_type": "cleaning",
+  "tool": {
+    "name": "python-data-cleaning-toolkit",
+    "version": "0.1.0"
+  },
+  "generated_at": "2026-10-13T09:24:31+00:00",
+  "execution": {
+    "status": "success",
+    "error": null,
+    "error_type": null
+  },
+  "data_quality": {
+    "status": "issues_found",
+    "summary": "Execution succeeded, but 6 type(s) of unresolved issue (10 occurrence(s)) remain. Review them before using the data.",
+    "note": "The data-quality status reflects only the configured rules and the toolkit's built-in checks. It is not a certification that the data is correct or complete.",
+    "unresolved_anomaly_types": 6,
+    "unresolved_occurrences": 10
+  },
+  "input": {
+    "path": "data/sample/orders_raw.xlsx",
+    "file_name": "orders_raw.xlsx",
+    "format": "xlsx",
+    "encoding": null,
+    "delimiter": null,
+    "delimiter_detected": false,
+    "sheet": "Orders",
+    "available_sheets": [
+      "Read me",
+      "Orders"
+    ],
+    "rows": 8,
+    "columns": 7,
+    "skipped_blank_rows": 0,
+    "formula_cells": 0,
+    "uncalculated_formula_cells": 0,
+    "warnings": [],
+    "sha256_before": "83bac20784ee097c5402846a166c3a7397537b4f33089b06d33c70697458f704",
+    "sha256_after": "83bac20784ee097c5402846a166c3a7397537b4f33089b06d33c70697458f704",
+    "unchanged": true
+  },
+  "outputs": {
+    "cleaned": {
+      "path": "reports/examples/orders_clean.xlsx",
+      "file_name": "orders_clean.xlsx",
+      "format": "xlsx",
+      "rows": 6,
+      "columns": 7,
+      "verified": true,
+      "warnings": []
+    },
+    "quarantine": {
+      "path": "reports/examples/orders_clean_quarantine.xlsx",
+      "file_name": "orders_clean_quarantine.xlsx",
+      "format": "xlsx",
+      "rows": 1,
+      "columns": 8,
+      "verified": true,
+      "warnings": []
+    },
+    "removed_rows": {
+      "path": "reports/examples/orders_clean_removed_rows.xlsx",
+      "file_name": "orders_clean_removed_rows.xlsx",
+      "format": "xlsx",
+      "rows": 1,
+      "columns": 8,
+      "verified": true,
+      "warnings": []
+    }
+  },
+  "planned_outputs": {
+    "cleaned": "reports/examples/orders_clean.xlsx",
+    "quarantine": "reports/examples/orders_clean_quarantine.xlsx",
+    "removed_rows": "reports/examples/orders_clean_removed_rows.xlsx",
+    "report_json": "reports/examples/orders_clean_report.json",
+    "report_markdown": "reports/examples/orders_clean_report.md"
+  },
+  "dimensions": {
+    "initial": {
+      "rows": 8,
+      "columns": 7
+    },
+    "final": {
+      "rows": 6,
+      "columns": 7
+    },
+    "rows_removed": 1,
+    "rows_quarantined": 1,
+    "blank_rows_skipped_on_import": 0
+  },
+  "missing_values": [
+    {
+      "column": "order_id",
+      "original_column": "Order ID",
+      "before": 1,
+      "after": 0
+    },
+    {
+      "column": "order_date",
+      "original_column": "Order Date",
+      "before": 0,
+      "after": 0
+    },
+    {
+      "column": "customer_id",
+      "original_column": "Customer ID",
+      "before": 0,
+      "after": 0
+    },
+    {
+      "column": "sku",
+      "original_column": "SKU",
+      "before": 0,
+      "after": 0
+    },
+    {
+      "column": "quantity",
+      "original_column": "Quantity",
+      "before": 0,
+      "after": 0
+    },
+    {
+      "column": "unit_price",
+      "original_column": "Unit Price",
+      "before": 1,
+      "after": 1
+    },
+    {
+      "column": "channel",
+      "original_column": "Channel",
+      "before": 0,
+      "after": 0
+    }
+  ],
+  "columns": {
+    "mapping": {
+      "Order ID": "order_id",
+      "Order Date": "order_date",
+      "Customer ID": "customer_id",
+      "SKU": "sku",
+      "Quantity": "quantity",
+      "Unit Price": "unit_price",
+      "Channel": "channel"
+    },
+    "renamed": {
+      "Order ID": "order_id",
+      "Order Date": "order_date",
+      "Customer ID": "customer_id",
+      "SKU": "sku",
+      "Quantity": "quantity",
+      "Unit Price": "unit_price",
+      "Channel": "channel"
+    },
+    "cells_differing_from_input": {
+      "order_date": 2,
+      "sku": 1,
+      "unit_price": 2,
+      "channel": 3
+    },
+    "changes_per_column_summed_over_steps": {
+      "sku": 1,
+      "channel": 6,
+      "order_date": 3,
+      "unit_price": 4
+    }
+  },
+  "operations": [
+    {
+      "step": "normalize_column_names",
+      "description": "Column names: strip=True, collapse_whitespace=True, style=snake_case; 7 renamed",
+      "cells_changed": 0,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "standardize_missing",
+      "description": "Missing values: empty and whitespace-only cells, no extra tokens marked missing (no imputation)",
+      "cells_changed": 0,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "normalize_text",
+      "description": "Text trim, upper case on ['sku']",
+      "cells_changed": 1,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "normalize_text",
+      "description": "Text trim on ['channel']",
+      "cells_changed": 2,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "map_categories",
+      "description": "Category mapping on 'channel' (3 explicit label(s), case_insensitive=True)",
+      "cells_changed": 4,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "parse_dates",
+      "description": "Dates in 'order_date': formats ['%Y-%m-%d', '%d.%m.%Y'] -> %Y-%m-%d; failures kept",
+      "cells_changed": 3,
+      "rows_removed": 0,
+      "issues": 2
+    },
+    {
+      "step": "parse_numbers",
+      "description": "Numbers in 'quantity': decimal '.', thousands None; failures kept",
+      "cells_changed": 0,
+      "rows_removed": 0,
+      "issues": 2
+    },
+    {
+      "step": "parse_numbers",
+      "description": "Numbers in 'unit_price': decimal '.', thousands None; failures kept",
+      "cells_changed": 4,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "exact_duplicates",
+      "description": "Exact duplicates: 1 detected, 1 removed (first occurrence kept)",
+      "cells_changed": 0,
+      "rows_removed": 1,
+      "issues": 0
+    },
+    {
+      "step": "key_duplicates",
+      "description": "Key duplicates on ['order_id', 'sku']: 0 group(s), kept (removal not requested)",
+      "cells_changed": 0,
+      "rows_removed": 0,
+      "issues": 0
+    }
+  ],
+  "conversion_failures": [
+    {
+      "step": "parse_dates",
+      "source_row": 7,
+      "column": "order_date",
+      "value": "2024-13-01",
+      "reason": "does not match any configured date format (or is not a real calendar date)",
+      "in_cleaned_output": true
+    },
+    {
+      "step": "parse_dates",
+      "source_row": 9,
+      "column": "order_date",
+      "value": "2024-03-06 14:30:00",
+      "reason": "does not match any configured date format (or is not a real calendar date)",
+      "in_cleaned_output": true
+    },
+    {
+      "step": "parse_numbers",
+      "source_row": 5,
+      "column": "quantity",
+      "value": "two",
+      "reason": "not a number in the configured format",
+      "in_cleaned_output": true
+    },
+    {
+      "step": "parse_numbers",
+      "source_row": 6,
+      "column": "quantity",
+      "value": "two",
+      "reason": "not a number in the configured format",
+      "in_cleaned_output": false
+    }
+  ],
+  "duplicates": {
+    "exact": {
+      "duplicate_rows": 1,
+      "groups": [
+        {
+          "source_rows": [
+            5,
+            6
+          ]
+        }
+      ],
+      "removed": 1
+    },
+    "keys": {
+      "groups": [],
+      "duplicate_key_groups": 0,
+      "rows_in_groups": 0,
+      "groups_with_conflicting_values": 0,
+      "rows_with_missing_key": 1,
+      "removed": 0,
+      "rule": {
+        "keys": [
+          "order_id",
+          "sku"
+        ],
+        "remove": false,
+        "keep": "first"
+      }
+    }
+  },
+  "validation": {
+    "passed": false,
+    "rules": [
+      {
+        "id": "order_id_present",
+        "rule": "not_null",
+        "label": "not_null(order_id)",
+        "columns": [
+          "order_id"
+        ],
+        "action": "quarantine",
+        "status": "failed",
+        "failures": 1
+      },
+      {
+        "id": "customer_id_6_digits",
+        "rule": "pattern",
+        "label": "pattern(customer_id)",
+        "columns": [
+          "customer_id"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 1
+      },
+      {
+        "id": "quantity_at_least_1",
+        "rule": "range",
+        "label": "range(quantity)",
+        "columns": [
+          "quantity"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 2
+      },
+      {
+        "id": "channel_allowed",
+        "rule": "allowed_values",
+        "label": "allowed_values(channel)",
+        "columns": [
+          "channel"
+        ],
+        "action": "quarantine",
+        "status": "failed",
+        "failures": 1
+      },
+      {
+        "id": "order_date_is_iso_date",
+        "rule": "type",
+        "label": "type(order_date)",
+        "columns": [
+          "order_date"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 2
+      }
+    ],
+    "issue_count": 7,
+    "rows_with_issues": 5,
+    "issues": [
+      {
+        "rule_id": "order_id_present",
+        "rule": "not_null",
+        "column": "order_id",
+        "source_row": 8,
+        "value": null,
+        "message": "'order_id' is missing",
+        "action": "quarantine"
+      },
+      {
+        "rule_id": "customer_id_6_digits",
+        "rule": "pattern",
+        "column": "customer_id",
+        "source_row": 4,
+        "value": "101",
+        "message": "'101' does not match the pattern \\d{6}",
+        "action": "report"
+      },
+      {
+        "rule_id": "quantity_at_least_1",
+        "rule": "range",
+        "column": "quantity",
+        "source_row": 5,
+        "value": "two",
+        "message": "'two' is not a number; range cannot be checked",
+        "action": "report"
+      },
+      {
+        "rule_id": "quantity_at_least_1",
+        "rule": "range",
+        "column": "quantity",
+        "source_row": 7,
+        "value": "0",
+        "message": "0 is below the minimum 1",
+        "action": "report"
+      },
+      {
+        "rule_id": "channel_allowed",
+        "rule": "allowed_values",
+        "column": "channel",
+        "source_row": 8,
+        "value": "Fax",
+        "message": "'Fax' is not an allowed value",
+        "action": "quarantine"
+      },
+      {
+        "rule_id": "order_date_is_iso_date",
+        "rule": "type",
+        "column": "order_date",
+        "source_row": 7,
+        "value": "2024-13-01",
+        "message": "'2024-13-01' is not a date in format %Y-%m-%d",
+        "action": "report"
+      },
+      {
+        "rule_id": "order_date_is_iso_date",
+        "rule": "type",
+        "column": "order_date",
+        "source_row": 9,
+        "value": "2024-03-06 14:30:00",
+        "message": "'2024-03-06 14:30:00' is not a date in format %Y-%m-%d",
+        "action": "report"
+      }
+    ]
+  },
+  "anomalies": [
+    {
+      "type": "conversion_failure",
+      "count": 3,
+      "description": "3 date/number value(s) in the cleaned output could not be converted (1 more in rows that were removed or quarantined) (see conversion failures)."
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "order_id_present",
+      "count": 1,
+      "description": "Rule order_id_present (not_null(order_id)): 1 failure(s), action = quarantine"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "customer_id_6_digits",
+      "count": 1,
+      "description": "Rule customer_id_6_digits (pattern(customer_id)): 1 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "quantity_at_least_1",
+      "count": 2,
+      "description": "Rule quantity_at_least_1 (range(quantity)): 2 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "channel_allowed",
+      "count": 1,
+      "description": "Rule channel_allowed (allowed_values(channel)): 1 failure(s), action = quarantine"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "order_date_is_iso_date",
+      "count": 2,
+      "description": "Rule order_date_is_iso_date (type(order_date)): 2 failure(s), action = report"
+    }
+  ],
+  "warnings": [
+    "Column 'channel': 1 distinct value(s) are not covered by the category mapping and were left unchanged (e.g. 'Fax').",
+    "Column 'order_date': 2 date value(s) could not be converted and were left unchanged.",
+    "Column 'quantity': 2 value(s) could not be converted and were left unchanged; the column is kept as text.",
+    "1 row(s) have a missing value in ['order_id', 'sku'] and were excluded from key-duplicate checks."
+  ],
+  "steps": [
+    {
+      "step": "normalize_column_names",
+      "rule": {
+        "strip": true,
+        "collapse_whitespace": true,
+        "style": "snake_case",
+        "rename": {}
+      },
+      "cells_changed": {},
+      "total_cells_changed": 0,
+      "rows_removed": [],
+      "examples": {},
+      "issues": [],
+      "warnings": [],
+      "details": {
+        "mapping": {
+          "Order ID": "order_id",
+          "Order Date": "order_date",
+          "Customer ID": "customer_id",
+          "SKU": "sku",
+          "Quantity": "quantity",
+          "Unit Price": "unit_price",
+          "Channel": "channel"
+        },
+        "renamed": {
+          "Order ID": "order_id",
+          "Order Date": "order_date",
+          "Customer ID": "customer_id",
+          "SKU": "sku",
+          "Quantity": "quantity",
+          "Unit Price": "unit_price",
+          "Channel": "channel"
+        }
+      }
+    },
+    {
+      "step": "standardize_missing",
+      "rule": {
+        "tokens": [],
+        "case_sensitive": false,
+        "whitespace_as_missing": true,
+        "columns": "all"
+      },
+      "cells_changed": {},
+      "total_cells_changed": 0,
+      "rows_removed": [],
+      "examples": {},
+      "issues": [],
+      "warnings": [],
+      "details": {
+        "by_column": {
+          "order_id": {
+            "empty": 1,
+            "whitespace_only": 0,
+            "missing_after": 1
+          },
+          "order_date": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          },
+          "customer_id": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          },
+          "sku": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          },
+          "quantity": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          },
+          "unit_price": {
+            "empty": 1,
+            "whitespace_only": 0,
+            "missing_after": 1
+          },
+          "channel": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          }
+        }
+      }
+    },
+    {
+      "step": "normalize_text",
+      "rule": {
+        "columns": [
+          "sku"
+        ],
+        "strip": true,
+        "collapse_whitespace": false,
+        "case": "upper"
+      },
+      "cells_changed": {
+        "sku": 1
+      },
+      "total_cells_changed": 1,
+      "rows_removed": [],
+      "examples": {
+        "sku": [
+          {
+            "source_row": 3,
+            "before": " ab-002",
+            "after": "AB-002"
+          }
+        ]
+      },
+      "issues": [],
+      "warnings": [],
+      "details": {}
+    },
+    {
+      "step": "normalize_text",
+      "rule": {
+        "columns": [
+          "channel"
+        ],
+        "strip": true,
+        "collapse_whitespace": false,
+        "case": null
+      },
+      "cells_changed": {
+        "channel": 2
+      },
+      "total_cells_changed": 2,
+      "rows_removed": [],
+      "examples": {
+        "channel": [
+          {
+            "source_row": 5,
+            "before": "STORE ",
+            "after": "STORE"
+          },
+          {
+            "source_row": 6,
+            "before": "STORE ",
+            "after": "STORE"
+          }
+        ]
+      },
+      "issues": [],
+      "warnings": [],
+      "details": {}
+    },
+    {
+      "step": "map_categories",
+      "rule": {
+        "column": "channel",
+        "mapping": {
+          "online": "Online",
+          "store": "Store",
+          "phone": "Phone"
+        },
+        "case_insensitive": true
+      },
+      "cells_changed": {
+        "channel": 4
+      },
+      "total_cells_changed": 4,
+      "rows_removed": [],
+      "examples": {
+        "channel": [
+          {
+            "source_row": 3,
+            "before": "online",
+            "after": "Online"
+          },
+          {
+            "source_row": 5,
+            "before": "STORE",
+            "after": "Store"
+          },
+          {
+            "source_row": 6,
+            "before": "STORE",
+            "after": "Store"
+          },
+          {
+            "source_row": 9,
+            "before": "phone",
+            "after": "Phone"
+          }
+        ]
+      },
+      "issues": [],
+      "warnings": [
+        "Column 'channel': 1 distinct value(s) are not covered by the category mapping and were left unchanged (e.g. 'Fax')."
+      ],
+      "details": {
+        "replacements": [
+          {
+            "from": "STORE",
+            "to": "Store",
+            "count": 2
+          },
+          {
+            "from": "online",
+            "to": "Online",
+            "count": 1
+          },
+          {
+            "from": "phone",
+            "to": "Phone",
+            "count": 1
+          }
+        ],
+        "unmapped_values": {
+          "Fax": 1
+        }
+      }
+    },
+    {
+      "step": "parse_dates",
+      "rule": {
+        "column": "order_date",
+        "formats": [
+          "%Y-%m-%d",
+          "%d.%m.%Y"
+        ],
+        "output_format": "%Y-%m-%d",
+        "on_error": "keep"
+      },
+      "cells_changed": {
+        "order_date": 3
+      },
+      "total_cells_changed": 3,
+      "rows_removed": [],
+      "examples": {
+        "order_date": [
+          {
+            "source_row": 4,
+            "before": "01.03.2024",
+            "after": "2024-03-01"
+          },
+          {
+            "source_row": 5,
+            "before": "02.03.2024",
+            "after": "2024-03-02"
+          },
+          {
+            "source_row": 6,
+            "before": "02.03.2024",
+            "after": "2024-03-02"
+          }
+        ]
+      },
+      "issues": [
+        {
+          "source_row": 7,
+          "column": "order_date",
+          "value": "2024-13-01",
+          "reason": "does not match any configured date format (or is not a real calendar date)"
+        },
+        {
+          "source_row": 9,
+          "column": "order_date",
+          "value": "2024-03-06 14:30:00",
+          "reason": "does not match any configured date format (or is not a real calendar date)"
+        }
+      ],
+      "warnings": [
+        "Column 'order_date': 2 date value(s) could not be converted and were left unchanged."
+      ],
+      "details": {
+        "converted": 6,
+        "invalid": 2,
+        "ambiguous": 0
+      }
+    },
+    {
+      "step": "parse_numbers",
+      "rule": {
+        "column": "quantity",
+        "decimal": ".",
+        "thousands": null,
+        "strip_chars": "",
+        "allow_leading_zeros": false,
+        "on_error": "keep"
+      },
+      "cells_changed": {},
+      "total_cells_changed": 0,
+      "rows_removed": [],
+      "examples": {},
+      "issues": [
+        {
+          "source_row": 5,
+          "column": "quantity",
+          "value": "two",
+          "reason": "not a number in the configured format"
+        },
+        {
+          "source_row": 6,
+          "column": "quantity",
+          "value": "two",
+          "reason": "not a number in the configured format"
+        }
+      ],
+      "warnings": [
+        "Column 'quantity': 2 value(s) could not be converted and were left unchanged; the column is kept as text."
+      ],
+      "details": {
+        "converted": 6,
+        "failed": 2,
+        "result_dtype": "string"
+      }
+    },
+    {
+      "step": "parse_numbers",
+      "rule": {
+        "column": "unit_price",
+        "decimal": ".",
+        "thousands": null,
+        "strip_chars": "",
+        "allow_leading_zeros": false,
+        "on_error": "keep"
+      },
+      "cells_changed": {
+        "unit_price": 4
+      },
+      "total_cells_changed": 4,
+      "rows_removed": [],
+      "examples": {
+        "unit_price": [
+          {
+            "source_row": 3,
+            "before": "5",
+            "after": 5.0
+          },
+          {
+            "source_row": 4,
+            "before": "12.50",
+            "after": 12.5
+          },
+          {
+            "source_row": 5,
+            "before": "1299.00",
+            "after": 1299.0
+          },
+          {
+            "source_row": 6,
+            "before": "1299.00",
+            "after": 1299.0
+          }
+        ]
+      },
+      "issues": [],
+      "warnings": [],
+      "details": {
+        "converted": 7,
+        "failed": 0,
+        "result_dtype": "Float64"
+      }
+    },
+    {
+      "step": "exact_duplicates",
+      "rule": {
+        "remove": true,
+        "keep": "first occurrence"
+      },
+      "cells_changed": {},
+      "total_cells_changed": 0,
+      "rows_removed": [
+        6
+      ],
+      "examples": {},
+      "issues": [],
+      "warnings": [],
+      "details": {
+        "duplicate_rows": 1,
+        "groups": [
+          {
+            "source_rows": [
+              5,
+              6
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "step": "key_duplicates",
+      "rule": {
+        "keys": [
+          "order_id",
+          "sku"
+        ],
+        "remove": false,
+        "keep": "first"
+      },
+      "cells_changed": {},
+      "total_cells_changed": 0,
+      "rows_removed": [],
+      "examples": {},
+      "issues": [],
+      "warnings": [
+        "1 row(s) have a missing value in ['order_id', 'sku'] and were excluded from key-duplicate checks."
+      ],
+      "details": {
+        "groups": [],
+        "duplicate_key_groups": 0,
+        "rows_in_groups": 0,
+        "groups_with_conflicting_values": 0,
+        "rows_with_missing_key": 1
+      }
+    }
+  ],
+  "configuration": {
+    "description": "Cleaning rules for the 'Orders' sheet of data/sample/orders_raw.xlsx (synthetic). Order lines are identified by order ID + SKU.",
+    "input": {
+      "sheet": "Orders",
+      "encoding": null,
+      "delimiter": null
+    },
+    "output": {
+      "csv_encoding": "utf-8",
+      "csv_delimiter": ",",
+      "sheet_name": "cleaned"
+    },
+    "column_names": {
+      "strip": true,
+      "collapse_whitespace": true,
+      "style": "snake_case",
+      "rename": {}
+    },
+    "missing_values": {
+      "tokens": [],
+      "case_sensitive": false,
+      "whitespace_as_missing": true
+    },
+    "text": [
+      {
+        "strip": true,
+        "collapse_whitespace": false,
+        "case": "upper",
+        "columns": [
+          "sku"
+        ]
+      },
+      {
+        "strip": true,
+        "collapse_whitespace": false,
+        "case": null,
+        "columns": [
+          "channel"
+        ]
+      }
+    ],
+    "categories": [
+      {
+        "case_insensitive": true,
+        "column": "channel",
+        "mapping": {
+          "online": "Online",
+          "store": "Store",
+          "phone": "Phone"
+        }
+      }
+    ],
+    "dates": [
+      {
+        "output_format": "%Y-%m-%d",
+        "on_error": "keep",
+        "column": "order_date",
+        "formats": [
+          "%Y-%m-%d",
+          "%d.%m.%Y"
+        ]
+      }
+    ],
+    "numbers": [
+      {
+        "decimal": ".",
+        "thousands": null,
+        "strip_chars": "",
+        "allow_leading_zeros": false,
+        "on_error": "keep",
+        "column": "quantity"
+      },
+      {
+        "decimal": ".",
+        "thousands": null,
+        "strip_chars": "",
+        "allow_leading_zeros": false,
+        "on_error": "keep",
+        "column": "unit_price"
+      }
+    ],
+    "duplicates": {
+      "remove_exact": true,
+      "key_columns": [
+        "order_id",
+        "sku"
+      ],
+      "remove_key_duplicates": false,
+      "keep": "first"
+    },
+    "validation": [
+      {
+        "id": "order_id_present",
+        "rule": "not_null",
+        "column": "order_id",
+        "action": "quarantine"
+      },
+      {
+        "id": "customer_id_6_digits",
+        "rule": "pattern",
+        "column": "customer_id",
+        "regex": "\\d{6}"
+      },
+      {
+        "id": "quantity_at_least_1",
+        "rule": "range",
+        "column": "quantity",
+        "min": 1
+      },
+      {
+        "id": "channel_allowed",
+        "rule": "allowed_values",
+        "column": "channel",
+        "values": [
+          "Online",
+          "Store",
+          "Phone"
+        ],
+        "action": "quarantine"
+      },
+      {
+        "id": "order_date_is_iso_date",
+        "rule": "type",
+        "column": "order_date",
+        "expected": "date"
+      }
+    ]
+  },
+  "overrides": {
+    "input.sheet": "Orders",
+    "overwrite": true
+  },
+  "profile_before": {
+    "rows": 8,
+    "columns": 7,
+    "column_names": [
+      "Order ID",
+      "Order Date",
+      "Customer ID",
+      "SKU",
+      "Quantity",
+      "Unit Price",
+      "Channel"
+    ],
+    "missing_cells": 2,
+    "missing_by_column": {
+      "Order ID": 1,
+      "Order Date": 0,
+      "Customer ID": 0,
+      "SKU": 0,
+      "Quantity": 0,
+      "Unit Price": 1,
+      "Channel": 0
+    },
+    "fully_missing_rows": 0,
+    "exact_duplicate_rows": 1,
+    "exact_duplicate_groups": [
+      [
+        5,
+        6
+      ]
+    ],
+    "column_profiles": {
+      "Order ID": {
+        "dtype": "string",
+        "non_missing": 7,
+        "missing": 1,
+        "missing_pct": 12.5,
+        "distinct": 5,
+        "value_kinds": {
+          "text": 7
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "SO-1001",
+          "SO-1002",
+          "SO-1003",
+          "SO-1004",
+          "SO-1005"
+        ]
+      },
+      "Order Date": {
+        "dtype": "string",
+        "non_missing": 8,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 6,
+        "value_kinds": {
+          "date-like": 8
+        },
+        "inferred_type": "date-like",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 3,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "2024-03-01",
+          "01.03.2024",
+          "02.03.2024",
+          "2024-13-01",
+          "2024-03-05"
+        ]
+      },
+      "Customer ID": {
+        "dtype": "string",
+        "non_missing": 8,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 6,
+        "value_kinds": {
+          "integer": 8
+        },
+        "inferred_type": "integer",
+        "leading_zero_values": 7,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "000101",
+          "101",
+          "000103",
+          "000104",
+          "000105"
+        ]
+      },
+      "SKU": {
+        "dtype": "string",
+        "non_missing": 8,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 5,
+        "value_kinds": {
+          "text": 8
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 1,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "AB-001",
+          " ab-002",
+          "CD-100",
+          "CD-200",
+          "EF-300"
+        ]
+      },
+      "Quantity": {
+        "dtype": "string",
+        "non_missing": 8,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 6,
+        "value_kinds": {
+          "integer": 6,
+          "text": 2
+        },
+        "inferred_type": "mixed",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "2",
+          "1",
+          "3",
+          "two",
+          "0"
+        ]
+      },
+      "Unit Price": {
+        "dtype": "string",
+        "non_missing": 7,
+        "missing": 1,
+        "missing_pct": 12.5,
+        "distinct": 5,
+        "value_kinds": {
+          "numeric-like": 6,
+          "integer": 1
+        },
+        "inferred_type": "numeric-like",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "19.99",
+          "5",
+          "12.50",
+          "1299.00",
+          "7.5"
+        ]
+      },
+      "Channel": {
+        "dtype": "string",
+        "non_missing": 8,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 7,
+        "value_kinds": {
+          "text": 8
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 2,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "Online",
+          "online",
+          "Store",
+          "STORE ",
+          "Phone"
+        ]
+      }
+    }
+  },
+  "profile_after": {
+    "rows": 6,
+    "columns": 7,
+    "column_names": [
+      "order_id",
+      "order_date",
+      "customer_id",
+      "sku",
+      "quantity",
+      "unit_price",
+      "channel"
+    ],
+    "missing_cells": 1,
+    "missing_by_column": {
+      "order_id": 0,
+      "order_date": 0,
+      "customer_id": 0,
+      "sku": 0,
+      "quantity": 0,
+      "unit_price": 1,
+      "channel": 0
+    },
+    "fully_missing_rows": 0,
+    "exact_duplicate_rows": 0,
+    "exact_duplicate_groups": [],
+    "column_profiles": {
+      "order_id": {
+        "dtype": "string",
+        "non_missing": 6,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 5,
+        "value_kinds": {
+          "text": 6
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "SO-1001",
+          "SO-1002",
+          "SO-1003",
+          "SO-1004",
+          "SO-1005"
+        ]
+      },
+      "order_date": {
+        "dtype": "string",
+        "non_missing": 6,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 4,
+        "value_kinds": {
+          "date-like": 6
+        },
+        "inferred_type": "date-like",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "2024-03-01",
+          "2024-03-02",
+          "2024-13-01",
+          "2024-03-06 14:30:00"
+        ]
+      },
+      "customer_id": {
+        "dtype": "string",
+        "non_missing": 6,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 5,
+        "value_kinds": {
+          "integer": 6
+        },
+        "inferred_type": "integer",
+        "leading_zero_values": 5,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "000101",
+          "101",
+          "000103",
+          "000104",
+          "000106"
+        ]
+      },
+      "sku": {
+        "dtype": "string",
+        "non_missing": 6,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 5,
+        "value_kinds": {
+          "text": 6
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "AB-001",
+          "AB-002",
+          "CD-100",
+          "CD-200",
+          "EF-300"
+        ]
+      },
+      "quantity": {
+        "dtype": "string",
+        "non_missing": 6,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 6,
+        "value_kinds": {
+          "integer": 5,
+          "text": 1
+        },
+        "inferred_type": "mixed",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "2",
+          "1",
+          "3",
+          "two",
+          "0"
+        ]
+      },
+      "unit_price": {
+        "dtype": "Float64",
+        "non_missing": 5,
+        "missing": 1,
+        "missing_pct": 16.67,
+        "distinct": 5,
+        "inferred_type": "number",
+        "value_kinds": {
+          "number": 5
+        },
+        "sample_values": [
+          19.99,
+          5.0,
+          12.5,
+          1299.0,
+          7.5
+        ]
+      },
+      "channel": {
+        "dtype": "string",
+        "non_missing": 6,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 3,
+        "value_kinds": {
+          "text": 6
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "Online",
+          "Store",
+          "Phone"
+        ]
+      }
+    }
+  }
+}
