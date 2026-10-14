@@ -278,7 +278,7 @@ def _table(headers: list[str], rows: list[list[Any]], limit: int | None = 80) ->
 def _truncated(items: list, what: str) -> tuple[list, list[str]]:
     if len(items) <= MAX_MARKDOWN_ROWS:
         return items, []
-    return items[:MAX_MARKDOWN_ROWS], [f"", f"_Showing {MAX_MARKDOWN_ROWS} of {len(items)} {what}; see the JSON report for all of them._"]
+    return items[:MAX_MARKDOWN_ROWS], ["", f"_Showing {MAX_MARKDOWN_ROWS} of {len(items)} {what}; see the JSON report for all of them._"]
 
 
 _QUALITY_LABELS = {

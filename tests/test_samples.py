@@ -237,6 +237,56 @@ def test_typo_in_config_is_rejected(workspace, capsys):
 # --------------------------------------------------------------------------- committed examples and sample hygiene
 
 
+def test_sales_demo_matches_the_scenario_design(workspace):
+    """docs/demo-sales-cleaning.md: every planted anomaly is fixed, kept and reported, or set aside as designed."""
+    code = main(["clean", "data/sample/sales_raw.csv", "output/sales_clean.csv", "--config", "config/sales_config.json"])
+    assert code == 3  # success, but issues remain on purpose
+    cleaned = read_table(workspace / "output/sales_clean.csv").data
+    rows = {(r["order_id"], r["quantity"]): r for r in cleaned.to_dict("records")}
+    assert len(cleaned) == 13
+    # fixed: labels, spaces, unambiguous date, currency and thousands separators, missing tokens
+    assert rows[("SO-1002", "1")]["region"] == "North" and rows[("SO-1002", "1")]["channel"] == "Online"
+    assert rows[("SO-1002", "1")]["sales_rep"] == "Ana Silva" and rows[("SO-1002", "1")]["unit_price"] == "89.9"
+    assert rows[("SO-1003", "5")]["order_date"] == "2026-09-15" and rows[("SO-1003", "5")]["channel"] == "Online"
+    assert rows[("SO-1001", "2")]["unit_price"] == "1250" and rows[("SO-1001", "2")]["sku"] == "00123"
+    assert rows[("SO-1006", "")]["quantity"] == "" and rows[("SO-1013", "7")]["region"] == ""
+    # kept unchanged (and reported): ambiguous or impossible dates, unexpected number format, suspicious values
+    assert rows[("SO-1004", "3")]["order_date"] == "05/09/2026"
+    assert rows[("SO-1005", "1")]["order_date"] == "2026-09-31"
+    assert rows[("SO-1008", "4")]["unit_price"] == "12,5" and ("SO-1008", "6") in rows  # key duplicate: both kept
+    assert rows[("SO-1007", "-2")]["region"] == "East" and rows[("SO-1006", "")]["region"] == "Sth"
+    assert rows[("SO-1012", "1")]["sku"] == "0123" and rows[("SO-1012", "1")]["order_date"] == "2026-10-02"
+    quarantine = read_table(workspace / "output/sales_clean_quarantine.csv").data
+    assert quarantine["quarantine_reason"].tolist() == [
+        "[order_id_present] 'order_id' is missing",
+        "[channel_allowed] 'Fax' is not an allowed value",
+    ]
+    removed = read_table(workspace / "output/sales_clean_removed_rows.csv").data
+    assert removed["removal_reason"].tolist() == ["exact duplicate of row 11"]
+    report = _report(workspace / "output/sales_clean_report.json")
+    assert report["dimensions"]["initial"]["rows"] == 16 and report["dimensions"]["final"]["rows"] == 13
+    assert [(f["source_row"], f["column"]) for f in report["conversion_failures"]] == [
+        (5, "order_date"),
+        (6, "order_date"),
+        (9, "unit_price"),
+    ]
+    assert {r["id"]: r["failures"] for r in report["validation"]["rules"]} == {
+        "order_id_present": 1,
+        "channel_allowed": 1,
+        "region_present": 1,
+        "region_allowed": 1,
+        "order_date_is_iso_date": 2,
+        "order_date_in_september": 3,
+        "quantity_present": 1,
+        "quantity_at_least_1": 1,
+        "unit_price_is_number": 1,
+        "sku_5_digits": 1,
+        "order_line_unique": 2,
+    }
+    assert (report["validation"]["issue_count"], report["validation"]["rows_with_issues"]) == (15, 10)
+    assert report["input"]["sha256_before"] == report["input"]["sha256_after"] == _sha256(SAMPLE / "sales_raw.csv")
+
+
 def _normalized_json(path: Path) -> dict:
     report = _report(path)
     report.pop("generated_at")

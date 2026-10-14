@@ -1,0 +1,1777 @@
+{
+  "report_type": "cleaning",
+  "tool": {
+    "name": "python-data-cleaning-toolkit",
+    "version": "0.1.0"
+  },
+  "generated_at": "2026-10-14T14:48:47+00:00",
+  "execution": {
+    "status": "success",
+    "error": null,
+    "error_type": null
+  },
+  "data_quality": {
+    "status": "issues_found",
+    "summary": "Execution succeeded, but 13 type(s) of unresolved issue (19 occurrence(s)) remain. Review them before using the data.",
+    "note": "The data-quality status reflects only the configured rules and the toolkit's built-in checks. It is not a certification that the data is correct or complete.",
+    "unresolved_anomaly_types": 13,
+    "unresolved_occurrences": 19
+  },
+  "input": {
+    "path": "data/sample/sales_raw.csv",
+    "file_name": "sales_raw.csv",
+    "format": "csv",
+    "encoding": "utf-8",
+    "delimiter": ",",
+    "delimiter_detected": true,
+    "sheet": null,
+    "available_sheets": [],
+    "rows": 16,
+    "columns": 8,
+    "skipped_blank_rows": 0,
+    "formula_cells": 0,
+    "uncalculated_formula_cells": 0,
+    "warnings": [],
+    "sha256_before": "356b7d1daf036cffbe29dbf0065fc8ad7198db4d3fa80d9f24f7c6aef220249f",
+    "sha256_after": "356b7d1daf036cffbe29dbf0065fc8ad7198db4d3fa80d9f24f7c6aef220249f",
+    "unchanged": true
+  },
+  "outputs": {
+    "cleaned": {
+      "path": "reports/examples/sales_clean.csv",
+      "file_name": "sales_clean.csv",
+      "format": "csv",
+      "rows": 13,
+      "columns": 8,
+      "verified": true,
+      "warnings": []
+    },
+    "quarantine": {
+      "path": "reports/examples/sales_clean_quarantine.csv",
+      "file_name": "sales_clean_quarantine.csv",
+      "format": "csv",
+      "rows": 2,
+      "columns": 9,
+      "verified": true,
+      "warnings": []
+    },
+    "removed_rows": {
+      "path": "reports/examples/sales_clean_removed_rows.csv",
+      "file_name": "sales_clean_removed_rows.csv",
+      "format": "csv",
+      "rows": 1,
+      "columns": 9,
+      "verified": true,
+      "warnings": []
+    }
+  },
+  "planned_outputs": {
+    "cleaned": "reports/examples/sales_clean.csv",
+    "quarantine": "reports/examples/sales_clean_quarantine.csv",
+    "removed_rows": "reports/examples/sales_clean_removed_rows.csv",
+    "report_json": "reports/examples/sales_clean_report.json",
+    "report_markdown": "reports/examples/sales_clean_report.md"
+  },
+  "dimensions": {
+    "initial": {
+      "rows": 16,
+      "columns": 8
+    },
+    "final": {
+      "rows": 13,
+      "columns": 8
+    },
+    "rows_removed": 1,
+    "rows_quarantined": 2,
+    "blank_rows_skipped_on_import": 0
+  },
+  "missing_values": [
+    {
+      "column": "order_id",
+      "original_column": "Order ID",
+      "before": 1,
+      "after": 0
+    },
+    {
+      "column": "order_date",
+      "original_column": "Order Date",
+      "before": 0,
+      "after": 0
+    },
+    {
+      "column": "region",
+      "original_column": " Region ",
+      "before": 1,
+      "after": 1
+    },
+    {
+      "column": "channel",
+      "original_column": "Channel",
+      "before": 0,
+      "after": 0
+    },
+    {
+      "column": "sku",
+      "original_column": "SKU",
+      "before": 0,
+      "after": 0
+    },
+    {
+      "column": "quantity",
+      "original_column": "Quantity",
+      "before": 1,
+      "after": 1
+    },
+    {
+      "column": "unit_price",
+      "original_column": "Unit Price",
+      "before": 0,
+      "after": 0
+    },
+    {
+      "column": "sales_rep",
+      "original_column": "Sales  Rep",
+      "before": 0,
+      "after": 0
+    }
+  ],
+  "columns": {
+    "mapping": {
+      "Order ID": "order_id",
+      "Order Date": "order_date",
+      " Region ": "region",
+      "Channel": "channel",
+      "SKU": "sku",
+      "Quantity": "quantity",
+      "Unit Price": "unit_price",
+      "Sales  Rep": "sales_rep"
+    },
+    "renamed": {
+      "Order ID": "order_id",
+      "Order Date": "order_date",
+      " Region ": "region",
+      "Channel": "channel",
+      "SKU": "sku",
+      "Quantity": "quantity",
+      "Unit Price": "unit_price",
+      "Sales  Rep": "sales_rep"
+    },
+    "cells_differing_from_input": {
+      "order_date": 1,
+      "region": 3,
+      "channel": 3,
+      "quantity": 1,
+      "unit_price": 12,
+      "sales_rep": 1
+    },
+    "changes_per_column_summed_over_steps": {
+      "region": 4,
+      "quantity": 1,
+      "sales_rep": 1,
+      "channel": 3,
+      "order_date": 1,
+      "unit_price": 15
+    }
+  },
+  "operations": [
+    {
+      "step": "normalize_column_names",
+      "description": "Column names: strip=True, collapse_whitespace=True, style=snake_case; 8 renamed",
+      "cells_changed": 0,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "standardize_missing",
+      "description": "Missing values: empty and whitespace-only cells plus tokens ['N/A', 'NULL'] marked missing (no imputation)",
+      "cells_changed": 2,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "normalize_text",
+      "description": "Text trim, collapse spaces on ['sales_rep']",
+      "cells_changed": 1,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "normalize_text",
+      "description": "Text trim on ['region', 'channel']",
+      "cells_changed": 1,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "map_categories",
+      "description": "Category mapping on 'region' (4 explicit label(s), case_insensitive=True)",
+      "cells_changed": 2,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "map_categories",
+      "description": "Category mapping on 'channel' (4 explicit label(s), case_insensitive=True)",
+      "cells_changed": 3,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "parse_dates",
+      "description": "Dates in 'order_date': formats ['%Y-%m-%d', '%d/%m/%Y', '%m/%d/%Y'] -> %Y-%m-%d; failures kept",
+      "cells_changed": 1,
+      "rows_removed": 0,
+      "issues": 2
+    },
+    {
+      "step": "parse_numbers",
+      "description": "Numbers in 'quantity': decimal '.', thousands None; failures kept",
+      "cells_changed": 0,
+      "rows_removed": 0,
+      "issues": 0
+    },
+    {
+      "step": "parse_numbers",
+      "description": "Numbers in 'unit_price': decimal '.', thousands ',', strip '$'; failures kept",
+      "cells_changed": 15,
+      "rows_removed": 0,
+      "issues": 1
+    },
+    {
+      "step": "exact_duplicates",
+      "description": "Exact duplicates: 1 detected, 1 removed (first occurrence kept)",
+      "cells_changed": 0,
+      "rows_removed": 1,
+      "issues": 0
+    },
+    {
+      "step": "key_duplicates",
+      "description": "Key duplicates on ['order_id', 'sku']: 1 group(s), kept (removal not requested)",
+      "cells_changed": 0,
+      "rows_removed": 0,
+      "issues": 0
+    }
+  ],
+  "conversion_failures": [
+    {
+      "step": "parse_dates",
+      "source_row": 5,
+      "column": "order_date",
+      "value": "05/09/2026",
+      "reason": "ambiguous date: %d/%m/%Y -> 2026-09-05, %m/%d/%Y -> 2026-05-09",
+      "in_cleaned_output": true
+    },
+    {
+      "step": "parse_dates",
+      "source_row": 6,
+      "column": "order_date",
+      "value": "2026-09-31",
+      "reason": "does not match any configured date format (or is not a real calendar date)",
+      "in_cleaned_output": true
+    },
+    {
+      "step": "parse_numbers",
+      "source_row": 9,
+      "column": "unit_price",
+      "value": "12,5",
+      "reason": "not a number in the configured format",
+      "in_cleaned_output": true
+    }
+  ],
+  "duplicates": {
+    "exact": {
+      "duplicate_rows": 1,
+      "groups": [
+        {
+          "source_rows": [
+            11,
+            12
+          ]
+        }
+      ],
+      "removed": 1
+    },
+    "keys": {
+      "groups": [
+        {
+          "key": {
+            "order_id": "SO-1008",
+            "sku": "00456"
+          },
+          "source_rows": [
+            9,
+            10
+          ],
+          "identical": false,
+          "differing_columns": [
+            "quantity",
+            "unit_price"
+          ]
+        }
+      ],
+      "duplicate_key_groups": 1,
+      "rows_in_groups": 2,
+      "groups_with_conflicting_values": 1,
+      "rows_with_missing_key": 1,
+      "removed": 0,
+      "rule": {
+        "keys": [
+          "order_id",
+          "sku"
+        ],
+        "remove": false,
+        "keep": "first"
+      }
+    }
+  },
+  "validation": {
+    "passed": false,
+    "rules": [
+      {
+        "id": "order_id_present",
+        "rule": "not_null",
+        "label": "not_null(order_id)",
+        "columns": [
+          "order_id"
+        ],
+        "action": "quarantine",
+        "status": "failed",
+        "failures": 1
+      },
+      {
+        "id": "channel_allowed",
+        "rule": "allowed_values",
+        "label": "allowed_values(channel)",
+        "columns": [
+          "channel"
+        ],
+        "action": "quarantine",
+        "status": "failed",
+        "failures": 1
+      },
+      {
+        "id": "region_present",
+        "rule": "not_null",
+        "label": "not_null(region)",
+        "columns": [
+          "region"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 1
+      },
+      {
+        "id": "region_allowed",
+        "rule": "allowed_values",
+        "label": "allowed_values(region)",
+        "columns": [
+          "region"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 1
+      },
+      {
+        "id": "order_date_is_iso_date",
+        "rule": "type",
+        "label": "type(order_date)",
+        "columns": [
+          "order_date"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 2
+      },
+      {
+        "id": "order_date_in_september",
+        "rule": "date_range",
+        "label": "date_range(order_date)",
+        "columns": [
+          "order_date"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 3
+      },
+      {
+        "id": "quantity_present",
+        "rule": "not_null",
+        "label": "not_null(quantity)",
+        "columns": [
+          "quantity"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 1
+      },
+      {
+        "id": "quantity_at_least_1",
+        "rule": "range",
+        "label": "range(quantity)",
+        "columns": [
+          "quantity"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 1
+      },
+      {
+        "id": "unit_price_is_number",
+        "rule": "type",
+        "label": "type(unit_price)",
+        "columns": [
+          "unit_price"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 1
+      },
+      {
+        "id": "sku_5_digits",
+        "rule": "pattern",
+        "label": "pattern(sku)",
+        "columns": [
+          "sku"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 1
+      },
+      {
+        "id": "order_line_unique",
+        "rule": "unique",
+        "label": "unique(order_id, sku)",
+        "columns": [
+          "order_id",
+          "sku"
+        ],
+        "action": "report",
+        "status": "failed",
+        "failures": 2
+      }
+    ],
+    "issue_count": 15,
+    "rows_with_issues": 10,
+    "issues": [
+      {
+        "rule_id": "order_id_present",
+        "rule": "not_null",
+        "column": "order_id",
+        "source_row": 13,
+        "value": null,
+        "message": "'order_id' is missing",
+        "action": "quarantine"
+      },
+      {
+        "rule_id": "channel_allowed",
+        "rule": "allowed_values",
+        "column": "channel",
+        "source_row": 14,
+        "value": "Fax",
+        "message": "'Fax' is not an allowed value",
+        "action": "quarantine"
+      },
+      {
+        "rule_id": "region_present",
+        "rule": "not_null",
+        "column": "region",
+        "source_row": 16,
+        "value": null,
+        "message": "'region' is missing",
+        "action": "report"
+      },
+      {
+        "rule_id": "region_allowed",
+        "rule": "allowed_values",
+        "column": "region",
+        "source_row": 7,
+        "value": "Sth",
+        "message": "'Sth' is not an allowed value",
+        "action": "report"
+      },
+      {
+        "rule_id": "order_date_is_iso_date",
+        "rule": "type",
+        "column": "order_date",
+        "source_row": 5,
+        "value": "05/09/2026",
+        "message": "'05/09/2026' is not a date in format %Y-%m-%d",
+        "action": "report"
+      },
+      {
+        "rule_id": "order_date_is_iso_date",
+        "rule": "type",
+        "column": "order_date",
+        "source_row": 6,
+        "value": "2026-09-31",
+        "message": "'2026-09-31' is not a date in format %Y-%m-%d",
+        "action": "report"
+      },
+      {
+        "rule_id": "order_date_in_september",
+        "rule": "date_range",
+        "column": "order_date",
+        "source_row": 5,
+        "value": "05/09/2026",
+        "message": "'05/09/2026' is not a date in format %Y-%m-%d; range cannot be checked",
+        "action": "report"
+      },
+      {
+        "rule_id": "order_date_in_september",
+        "rule": "date_range",
+        "column": "order_date",
+        "source_row": 6,
+        "value": "2026-09-31",
+        "message": "'2026-09-31' is not a date in format %Y-%m-%d; range cannot be checked",
+        "action": "report"
+      },
+      {
+        "rule_id": "order_date_in_september",
+        "rule": "date_range",
+        "column": "order_date",
+        "source_row": 15,
+        "value": "2026-10-02",
+        "message": "2026-10-02 is after 2026-09-30",
+        "action": "report"
+      },
+      {
+        "rule_id": "quantity_present",
+        "rule": "not_null",
+        "column": "quantity",
+        "source_row": 7,
+        "value": null,
+        "message": "'quantity' is missing",
+        "action": "report"
+      },
+      {
+        "rule_id": "quantity_at_least_1",
+        "rule": "range",
+        "column": "quantity",
+        "source_row": 8,
+        "value": -2,
+        "message": "-2 is below the minimum 1",
+        "action": "report"
+      },
+      {
+        "rule_id": "unit_price_is_number",
+        "rule": "type",
+        "column": "unit_price",
+        "source_row": 9,
+        "value": "12,5",
+        "message": "'12,5' is not a number",
+        "action": "report"
+      },
+      {
+        "rule_id": "sku_5_digits",
+        "rule": "pattern",
+        "column": "sku",
+        "source_row": 15,
+        "value": "0123",
+        "message": "'0123' does not match the pattern [0-9]{5}",
+        "action": "report"
+      },
+      {
+        "rule_id": "order_line_unique",
+        "rule": "unique",
+        "column": "order_id, sku",
+        "source_row": 9,
+        "value": {
+          "order_id": "SO-1008",
+          "sku": "00456"
+        },
+        "message": "value(s) {'order_id': 'SO-1008', 'sku': '00456'} are not unique",
+        "action": "report"
+      },
+      {
+        "rule_id": "order_line_unique",
+        "rule": "unique",
+        "column": "order_id, sku",
+        "source_row": 10,
+        "value": {
+          "order_id": "SO-1008",
+          "sku": "00456"
+        },
+        "message": "value(s) {'order_id': 'SO-1008', 'sku': '00456'} are not unique",
+        "action": "report"
+      }
+    ]
+  },
+  "anomalies": [
+    {
+      "type": "conversion_failure",
+      "count": 3,
+      "description": "3 date/number value(s) in the cleaned output could not be converted (see conversion failures)."
+    },
+    {
+      "type": "key_duplicates_kept",
+      "count": 1,
+      "description": "1 key value(s) in ['order_id', 'sku'] appear on several rows (1 with conflicting values); rows were kept."
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "order_id_present",
+      "count": 1,
+      "description": "Rule order_id_present (not_null(order_id)): 1 failure(s), action = quarantine"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "channel_allowed",
+      "count": 1,
+      "description": "Rule channel_allowed (allowed_values(channel)): 1 failure(s), action = quarantine"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "region_present",
+      "count": 1,
+      "description": "Rule region_present (not_null(region)): 1 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "region_allowed",
+      "count": 1,
+      "description": "Rule region_allowed (allowed_values(region)): 1 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "order_date_is_iso_date",
+      "count": 2,
+      "description": "Rule order_date_is_iso_date (type(order_date)): 2 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "order_date_in_september",
+      "count": 3,
+      "description": "Rule order_date_in_september (date_range(order_date)): 3 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "quantity_present",
+      "count": 1,
+      "description": "Rule quantity_present (not_null(quantity)): 1 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "quantity_at_least_1",
+      "count": 1,
+      "description": "Rule quantity_at_least_1 (range(quantity)): 1 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "unit_price_is_number",
+      "count": 1,
+      "description": "Rule unit_price_is_number (type(unit_price)): 1 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "sku_5_digits",
+      "count": 1,
+      "description": "Rule sku_5_digits (pattern(sku)): 1 failure(s), action = report"
+    },
+    {
+      "type": "validation_failed",
+      "rule_id": "order_line_unique",
+      "count": 2,
+      "description": "Rule order_line_unique (unique(order_id, sku)): 2 failure(s), action = report"
+    }
+  ],
+  "warnings": [
+    "Column 'region': 1 distinct value(s) are not covered by the category mapping and were left unchanged (e.g. 'Sth').",
+    "Column 'channel': 1 distinct value(s) are not covered by the category mapping and were left unchanged (e.g. 'Fax').",
+    "Column 'order_date': 2 date value(s) could not be converted and were left unchanged.",
+    "Column 'unit_price': 1 value(s) could not be converted and were left unchanged; the column is kept as text.",
+    "1 row(s) have a missing value in ['order_id', 'sku'] and were excluded from key-duplicate checks.",
+    "1 key value(s) in ['order_id', 'sku'] appear on more than one row (1 with differing values in other columns); rows were kept (removal not requested)."
+  ],
+  "steps": [
+    {
+      "step": "normalize_column_names",
+      "rule": {
+        "strip": true,
+        "collapse_whitespace": true,
+        "style": "snake_case",
+        "rename": {}
+      },
+      "cells_changed": {},
+      "total_cells_changed": 0,
+      "rows_removed": [],
+      "examples": {},
+      "issues": [],
+      "warnings": [],
+      "details": {
+        "mapping": {
+          "Order ID": "order_id",
+          "Order Date": "order_date",
+          " Region ": "region",
+          "Channel": "channel",
+          "SKU": "sku",
+          "Quantity": "quantity",
+          "Unit Price": "unit_price",
+          "Sales  Rep": "sales_rep"
+        },
+        "renamed": {
+          "Order ID": "order_id",
+          "Order Date": "order_date",
+          " Region ": "region",
+          "Channel": "channel",
+          "SKU": "sku",
+          "Quantity": "quantity",
+          "Unit Price": "unit_price",
+          "Sales  Rep": "sales_rep"
+        }
+      }
+    },
+    {
+      "step": "standardize_missing",
+      "rule": {
+        "tokens": [
+          "N/A",
+          "NULL"
+        ],
+        "case_sensitive": false,
+        "whitespace_as_missing": true,
+        "columns": "all"
+      },
+      "cells_changed": {
+        "region": 1,
+        "quantity": 1
+      },
+      "total_cells_changed": 2,
+      "rows_removed": [],
+      "examples": {
+        "region": [
+          {
+            "source_row": 16,
+            "before": "NULL",
+            "after": null
+          }
+        ],
+        "quantity": [
+          {
+            "source_row": 7,
+            "before": "N/A",
+            "after": null
+          }
+        ]
+      },
+      "issues": [],
+      "warnings": [],
+      "details": {
+        "by_column": {
+          "order_id": {
+            "empty": 1,
+            "whitespace_only": 0,
+            "missing_after": 1
+          },
+          "order_date": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          },
+          "region": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "token:NULL": 1,
+            "missing_after": 1
+          },
+          "channel": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          },
+          "sku": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          },
+          "quantity": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "token:N/A": 1,
+            "missing_after": 1
+          },
+          "unit_price": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          },
+          "sales_rep": {
+            "empty": 0,
+            "whitespace_only": 0,
+            "missing_after": 0
+          }
+        }
+      }
+    },
+    {
+      "step": "normalize_text",
+      "rule": {
+        "columns": [
+          "sales_rep"
+        ],
+        "strip": true,
+        "collapse_whitespace": true,
+        "case": null
+      },
+      "cells_changed": {
+        "sales_rep": 1
+      },
+      "total_cells_changed": 1,
+      "rows_removed": [],
+      "examples": {
+        "sales_rep": [
+          {
+            "source_row": 3,
+            "before": "  Ana   Silva ",
+            "after": "Ana Silva"
+          }
+        ]
+      },
+      "issues": [],
+      "warnings": [],
+      "details": {}
+    },
+    {
+      "step": "normalize_text",
+      "rule": {
+        "columns": [
+          "region",
+          "channel"
+        ],
+        "strip": true,
+        "collapse_whitespace": false,
+        "case": null
+      },
+      "cells_changed": {
+        "region": 1
+      },
+      "total_cells_changed": 1,
+      "rows_removed": [],
+      "examples": {
+        "region": [
+          {
+            "source_row": 3,
+            "before": " north ",
+            "after": "north"
+          }
+        ]
+      },
+      "issues": [],
+      "warnings": [],
+      "details": {}
+    },
+    {
+      "step": "map_categories",
+      "rule": {
+        "column": "region",
+        "mapping": {
+          "north": "North",
+          "south": "South",
+          "east": "East",
+          "west": "West"
+        },
+        "case_insensitive": true
+      },
+      "cells_changed": {
+        "region": 2
+      },
+      "total_cells_changed": 2,
+      "rows_removed": [],
+      "examples": {
+        "region": [
+          {
+            "source_row": 3,
+            "before": "north",
+            "after": "North"
+          },
+          {
+            "source_row": 4,
+            "before": "NORTH",
+            "after": "North"
+          }
+        ]
+      },
+      "issues": [],
+      "warnings": [
+        "Column 'region': 1 distinct value(s) are not covered by the category mapping and were left unchanged (e.g. 'Sth')."
+      ],
+      "details": {
+        "replacements": [
+          {
+            "from": "north",
+            "to": "North",
+            "count": 1
+          },
+          {
+            "from": "NORTH",
+            "to": "North",
+            "count": 1
+          }
+        ],
+        "unmapped_values": {
+          "Sth": 1
+        }
+      }
+    },
+    {
+      "step": "map_categories",
+      "rule": {
+        "column": "channel",
+        "mapping": {
+          "online": "Online",
+          "web": "Online",
+          "store": "Store",
+          "phone": "Phone"
+        },
+        "case_insensitive": true
+      },
+      "cells_changed": {
+        "channel": 3
+      },
+      "total_cells_changed": 3,
+      "rows_removed": [],
+      "examples": {
+        "channel": [
+          {
+            "source_row": 3,
+            "before": "online",
+            "after": "Online"
+          },
+          {
+            "source_row": 4,
+            "before": "Web",
+            "after": "Online"
+          },
+          {
+            "source_row": 6,
+            "before": "STORE",
+            "after": "Store"
+          }
+        ]
+      },
+      "issues": [],
+      "warnings": [
+        "Column 'channel': 1 distinct value(s) are not covered by the category mapping and were left unchanged (e.g. 'Fax')."
+      ],
+      "details": {
+        "replacements": [
+          {
+            "from": "online",
+            "to": "Online",
+            "count": 1
+          },
+          {
+            "from": "Web",
+            "to": "Online",
+            "count": 1
+          },
+          {
+            "from": "STORE",
+            "to": "Store",
+            "count": 1
+          }
+        ],
+        "unmapped_values": {
+          "Fax": 1
+        }
+      }
+    },
+    {
+      "step": "parse_dates",
+      "rule": {
+        "column": "order_date",
+        "formats": [
+          "%Y-%m-%d",
+          "%d/%m/%Y",
+          "%m/%d/%Y"
+        ],
+        "output_format": "%Y-%m-%d",
+        "on_error": "keep"
+      },
+      "cells_changed": {
+        "order_date": 1
+      },
+      "total_cells_changed": 1,
+      "rows_removed": [],
+      "examples": {
+        "order_date": [
+          {
+            "source_row": 4,
+            "before": "15/09/2026",
+            "after": "2026-09-15"
+          }
+        ]
+      },
+      "issues": [
+        {
+          "source_row": 5,
+          "column": "order_date",
+          "value": "05/09/2026",
+          "reason": "ambiguous date: %d/%m/%Y -> 2026-09-05, %m/%d/%Y -> 2026-05-09"
+        },
+        {
+          "source_row": 6,
+          "column": "order_date",
+          "value": "2026-09-31",
+          "reason": "does not match any configured date format (or is not a real calendar date)"
+        }
+      ],
+      "warnings": [
+        "Column 'order_date': 2 date value(s) could not be converted and were left unchanged."
+      ],
+      "details": {
+        "converted": 14,
+        "invalid": 1,
+        "ambiguous": 1
+      }
+    },
+    {
+      "step": "parse_numbers",
+      "rule": {
+        "column": "quantity",
+        "decimal": ".",
+        "thousands": null,
+        "strip_chars": "",
+        "allow_leading_zeros": false,
+        "on_error": "keep"
+      },
+      "cells_changed": {},
+      "total_cells_changed": 0,
+      "rows_removed": [],
+      "examples": {},
+      "issues": [],
+      "warnings": [],
+      "details": {
+        "converted": 15,
+        "failed": 0,
+        "result_dtype": "Int64"
+      }
+    },
+    {
+      "step": "parse_numbers",
+      "rule": {
+        "column": "unit_price",
+        "decimal": ".",
+        "thousands": ",",
+        "strip_chars": "$",
+        "allow_leading_zeros": false,
+        "on_error": "keep"
+      },
+      "cells_changed": {
+        "unit_price": 15
+      },
+      "total_cells_changed": 15,
+      "rows_removed": [],
+      "examples": {
+        "unit_price": [
+          {
+            "source_row": 2,
+            "before": "$1,250.00",
+            "after": "1250"
+          },
+          {
+            "source_row": 3,
+            "before": "$89.90",
+            "after": "89.9"
+          },
+          {
+            "source_row": 4,
+            "before": "$1,250.00",
+            "after": "1250"
+          },
+          {
+            "source_row": 5,
+            "before": "$15.00",
+            "after": "15"
+          },
+          {
+            "source_row": 6,
+            "before": "$89.90",
+            "after": "89.9"
+          }
+        ]
+      },
+      "issues": [
+        {
+          "source_row": 9,
+          "column": "unit_price",
+          "value": "12,5",
+          "reason": "not a number in the configured format"
+        }
+      ],
+      "warnings": [
+        "Column 'unit_price': 1 value(s) could not be converted and were left unchanged; the column is kept as text."
+      ],
+      "details": {
+        "converted": 15,
+        "failed": 1,
+        "result_dtype": "string"
+      }
+    },
+    {
+      "step": "exact_duplicates",
+      "rule": {
+        "remove": true,
+        "keep": "first occurrence"
+      },
+      "cells_changed": {},
+      "total_cells_changed": 0,
+      "rows_removed": [
+        12
+      ],
+      "examples": {},
+      "issues": [],
+      "warnings": [],
+      "details": {
+        "duplicate_rows": 1,
+        "groups": [
+          {
+            "source_rows": [
+              11,
+              12
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "step": "key_duplicates",
+      "rule": {
+        "keys": [
+          "order_id",
+          "sku"
+        ],
+        "remove": false,
+        "keep": "first"
+      },
+      "cells_changed": {},
+      "total_cells_changed": 0,
+      "rows_removed": [],
+      "examples": {},
+      "issues": [],
+      "warnings": [
+        "1 row(s) have a missing value in ['order_id', 'sku'] and were excluded from key-duplicate checks.",
+        "1 key value(s) in ['order_id', 'sku'] appear on more than one row (1 with differing values in other columns); rows were kept (removal not requested)."
+      ],
+      "details": {
+        "groups": [
+          {
+            "key": {
+              "order_id": "SO-1008",
+              "sku": "00456"
+            },
+            "source_rows": [
+              9,
+              10
+            ],
+            "identical": false,
+            "differing_columns": [
+              "quantity",
+              "unit_price"
+            ]
+          }
+        ],
+        "duplicate_key_groups": 1,
+        "rows_in_groups": 2,
+        "groups_with_conflicting_values": 1,
+        "rows_with_missing_key": 1
+      }
+    }
+  ],
+  "configuration": {
+    "description": "Cleaning rules for data/sample/sales_raw.csv (synthetic monthly sales lines, September 2026). An order line is identified by order ID + SKU.",
+    "input": {
+      "sheet": null,
+      "encoding": null,
+      "delimiter": null
+    },
+    "output": {
+      "csv_encoding": "utf-8",
+      "csv_delimiter": ",",
+      "sheet_name": "cleaned"
+    },
+    "column_names": {
+      "strip": true,
+      "collapse_whitespace": true,
+      "style": "snake_case",
+      "rename": {}
+    },
+    "missing_values": {
+      "tokens": [
+        "N/A",
+        "NULL"
+      ],
+      "case_sensitive": false,
+      "whitespace_as_missing": true
+    },
+    "text": [
+      {
+        "strip": true,
+        "collapse_whitespace": true,
+        "case": null,
+        "columns": [
+          "sales_rep"
+        ]
+      },
+      {
+        "strip": true,
+        "collapse_whitespace": false,
+        "case": null,
+        "columns": [
+          "region",
+          "channel"
+        ]
+      }
+    ],
+    "categories": [
+      {
+        "case_insensitive": true,
+        "column": "region",
+        "mapping": {
+          "north": "North",
+          "south": "South",
+          "east": "East",
+          "west": "West"
+        }
+      },
+      {
+        "case_insensitive": true,
+        "column": "channel",
+        "mapping": {
+          "online": "Online",
+          "web": "Online",
+          "store": "Store",
+          "phone": "Phone"
+        }
+      }
+    ],
+    "dates": [
+      {
+        "output_format": "%Y-%m-%d",
+        "on_error": "keep",
+        "column": "order_date",
+        "formats": [
+          "%Y-%m-%d",
+          "%d/%m/%Y",
+          "%m/%d/%Y"
+        ]
+      }
+    ],
+    "numbers": [
+      {
+        "decimal": ".",
+        "thousands": null,
+        "strip_chars": "",
+        "allow_leading_zeros": false,
+        "on_error": "keep",
+        "column": "quantity"
+      },
+      {
+        "decimal": ".",
+        "thousands": ",",
+        "strip_chars": "$",
+        "allow_leading_zeros": false,
+        "on_error": "keep",
+        "column": "unit_price"
+      }
+    ],
+    "duplicates": {
+      "remove_exact": true,
+      "key_columns": [
+        "order_id",
+        "sku"
+      ],
+      "remove_key_duplicates": false,
+      "keep": "first"
+    },
+    "validation": [
+      {
+        "id": "order_id_present",
+        "rule": "not_null",
+        "column": "order_id",
+        "action": "quarantine"
+      },
+      {
+        "id": "channel_allowed",
+        "rule": "allowed_values",
+        "column": "channel",
+        "values": [
+          "Online",
+          "Store",
+          "Phone"
+        ],
+        "action": "quarantine"
+      },
+      {
+        "id": "region_present",
+        "rule": "not_null",
+        "column": "region"
+      },
+      {
+        "id": "region_allowed",
+        "rule": "allowed_values",
+        "column": "region",
+        "values": [
+          "North",
+          "South",
+          "East",
+          "West"
+        ]
+      },
+      {
+        "id": "order_date_is_iso_date",
+        "rule": "type",
+        "column": "order_date",
+        "expected": "date"
+      },
+      {
+        "id": "order_date_in_september",
+        "rule": "date_range",
+        "column": "order_date",
+        "min": "2026-09-01",
+        "max": "2026-09-30"
+      },
+      {
+        "id": "quantity_present",
+        "rule": "not_null",
+        "column": "quantity"
+      },
+      {
+        "id": "quantity_at_least_1",
+        "rule": "range",
+        "column": "quantity",
+        "min": 1
+      },
+      {
+        "id": "unit_price_is_number",
+        "rule": "type",
+        "column": "unit_price",
+        "expected": "number"
+      },
+      {
+        "id": "sku_5_digits",
+        "rule": "pattern",
+        "column": "sku",
+        "regex": "[0-9]{5}"
+      },
+      {
+        "id": "order_line_unique",
+        "rule": "unique",
+        "columns": [
+          "order_id",
+          "sku"
+        ]
+      }
+    ]
+  },
+  "overrides": {
+    "overwrite": true
+  },
+  "profile_before": {
+    "rows": 16,
+    "columns": 8,
+    "column_names": [
+      "Order ID",
+      "Order Date",
+      " Region ",
+      "Channel",
+      "SKU",
+      "Quantity",
+      "Unit Price",
+      "Sales  Rep"
+    ],
+    "missing_cells": 3,
+    "missing_by_column": {
+      "Order ID": 1,
+      "Order Date": 0,
+      " Region ": 1,
+      "Channel": 0,
+      "SKU": 0,
+      "Quantity": 1,
+      "Unit Price": 0,
+      "Sales  Rep": 0
+    },
+    "fully_missing_rows": 0,
+    "exact_duplicate_rows": 1,
+    "exact_duplicate_groups": [
+      [
+        11,
+        12
+      ]
+    ],
+    "column_profiles": {
+      "Order ID": {
+        "dtype": "string",
+        "non_missing": 15,
+        "missing": 1,
+        "missing_pct": 6.25,
+        "distinct": 13,
+        "value_kinds": {
+          "text": 15
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "SO-1001",
+          "SO-1002",
+          "SO-1003",
+          "SO-1004",
+          "SO-1005"
+        ]
+      },
+      "Order Date": {
+        "dtype": "string",
+        "non_missing": 16,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 13,
+        "value_kinds": {
+          "date-like": 16
+        },
+        "inferred_type": "date-like",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 1,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "2026-09-01",
+          "2026-09-02",
+          "15/09/2026",
+          "05/09/2026",
+          "2026-09-31"
+        ]
+      },
+      " Region ": {
+        "dtype": "string",
+        "non_missing": 15,
+        "missing": 1,
+        "missing_pct": 6.25,
+        "distinct": 7,
+        "value_kinds": {
+          "text": 15
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 1,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "North",
+          " north ",
+          "NORTH",
+          "South",
+          "Sth"
+        ]
+      },
+      "Channel": {
+        "dtype": "string",
+        "non_missing": 16,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 7,
+        "value_kinds": {
+          "text": 16
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "Online",
+          "online",
+          "Web",
+          "Store",
+          "STORE"
+        ]
+      },
+      "SKU": {
+        "dtype": "string",
+        "non_missing": 16,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 4,
+        "value_kinds": {
+          "integer": 16
+        },
+        "inferred_type": "integer",
+        "leading_zero_values": 16,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "00123",
+          "00456",
+          "00789",
+          "0123"
+        ]
+      },
+      "Quantity": {
+        "dtype": "string",
+        "non_missing": 15,
+        "missing": 1,
+        "missing_pct": 6.25,
+        "distinct": 9,
+        "value_kinds": {
+          "integer": 15
+        },
+        "inferred_type": "integer",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "2",
+          "1",
+          "5",
+          "3",
+          "-2"
+        ]
+      },
+      "Unit Price": {
+        "dtype": "string",
+        "non_missing": 16,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 4,
+        "value_kinds": {
+          "text": 15,
+          "numeric-like": 1
+        },
+        "inferred_type": "mixed",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "$1,250.00",
+          "$89.90",
+          "$15.00",
+          "12,5"
+        ]
+      },
+      "Sales  Rep": {
+        "dtype": "string",
+        "non_missing": 16,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 5,
+        "value_kinds": {
+          "text": 16
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 1,
+        "values_with_repeated_internal_spaces": 1,
+        "sample_values": [
+          "Ana Silva",
+          "  Ana   Silva ",
+          "Ben Osei",
+          "Chen Li",
+          "Dara Kim"
+        ]
+      }
+    }
+  },
+  "profile_after": {
+    "rows": 13,
+    "columns": 8,
+    "column_names": [
+      "order_id",
+      "order_date",
+      "region",
+      "channel",
+      "sku",
+      "quantity",
+      "unit_price",
+      "sales_rep"
+    ],
+    "missing_cells": 2,
+    "missing_by_column": {
+      "order_id": 0,
+      "order_date": 0,
+      "region": 1,
+      "channel": 0,
+      "sku": 0,
+      "quantity": 1,
+      "unit_price": 0,
+      "sales_rep": 0
+    },
+    "fully_missing_rows": 0,
+    "exact_duplicate_rows": 0,
+    "exact_duplicate_groups": [],
+    "column_profiles": {
+      "order_id": {
+        "dtype": "string",
+        "non_missing": 13,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 12,
+        "value_kinds": {
+          "text": 13
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "SO-1001",
+          "SO-1002",
+          "SO-1003",
+          "SO-1004",
+          "SO-1005"
+        ]
+      },
+      "order_date": {
+        "dtype": "string",
+        "non_missing": 13,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 11,
+        "value_kinds": {
+          "date-like": 13
+        },
+        "inferred_type": "date-like",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 1,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "2026-09-01",
+          "2026-09-02",
+          "2026-09-15",
+          "05/09/2026",
+          "2026-09-31"
+        ]
+      },
+      "region": {
+        "dtype": "string",
+        "non_missing": 12,
+        "missing": 1,
+        "missing_pct": 7.69,
+        "distinct": 5,
+        "value_kinds": {
+          "text": 12
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "North",
+          "South",
+          "Sth",
+          "East",
+          "West"
+        ]
+      },
+      "channel": {
+        "dtype": "string",
+        "non_missing": 13,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 3,
+        "value_kinds": {
+          "text": 13
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "Online",
+          "Store",
+          "Phone"
+        ]
+      },
+      "sku": {
+        "dtype": "string",
+        "non_missing": 13,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 4,
+        "value_kinds": {
+          "integer": 13
+        },
+        "inferred_type": "integer",
+        "leading_zero_values": 13,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "00123",
+          "00456",
+          "00789",
+          "0123"
+        ]
+      },
+      "quantity": {
+        "dtype": "Int64",
+        "non_missing": 12,
+        "missing": 1,
+        "missing_pct": 7.69,
+        "distinct": 9,
+        "inferred_type": "number",
+        "value_kinds": {
+          "number": 12
+        },
+        "sample_values": [
+          2,
+          1,
+          5,
+          3,
+          -2
+        ]
+      },
+      "unit_price": {
+        "dtype": "string",
+        "non_missing": 13,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 4,
+        "value_kinds": {
+          "integer": 8,
+          "numeric-like": 5
+        },
+        "inferred_type": "numeric-like",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "1250",
+          "89.9",
+          "15",
+          "12,5"
+        ]
+      },
+      "sales_rep": {
+        "dtype": "string",
+        "non_missing": 13,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "distinct": 4,
+        "value_kinds": {
+          "text": 13
+        },
+        "inferred_type": "text",
+        "leading_zero_values": 0,
+        "ambiguous_date_values": 0,
+        "values_with_surrounding_whitespace": 0,
+        "values_with_repeated_internal_spaces": 0,
+        "sample_values": [
+          "Ana Silva",
+          "Ben Osei",
+          "Chen Li",
+          "Dara Kim"
+        ]
+      }
+    }
+  }
+}

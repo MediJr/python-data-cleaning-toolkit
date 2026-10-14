@@ -24,6 +24,7 @@ COMMANDS: list[tuple[list[str], int]] = [
     (["profile", "data/sample/customers_raw.csv", "--config", "config/customers_config.json", "--report-dir", EXAMPLES, "--overwrite"], 0),
     (["clean", "data/sample/customers_raw.csv", f"{EXAMPLES}/customers_clean.csv", "--config", "config/customers_config.json", "--overwrite"], 3),
     (["clean", "data/sample/orders_raw.xlsx", f"{EXAMPLES}/orders_clean.xlsx", "--sheet", "Orders", "--config", "config/orders_config.json", "--overwrite"], 3),
+    (["clean", "data/sample/sales_raw.csv", f"{EXAMPLES}/sales_clean.csv", "--config", "config/sales_config.json", "--overwrite"], 3),
     (["clean", "data/sample/invalid/column_collision.csv", f"{EXAMPLES}/column_collision_clean.csv", "--config", "config/invalid/collision_config.json", "--overwrite"], 1),
 ]
 

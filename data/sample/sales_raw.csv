@@ -1,0 +1,17 @@
+Order ID,Order Date, Region ,Channel,SKU,Quantity,Unit Price,Sales  Rep
+SO-1001,2026-09-01,North,Online,00123,2,"$1,250.00",Ana Silva
+SO-1002,2026-09-02, north ,online,00456,1,$89.90,  Ana   Silva 
+SO-1003,15/09/2026,NORTH,Web,00123,5,"$1,250.00",Ana Silva
+SO-1004,05/09/2026,South,Store,00789,3,$15.00,Ben Osei
+SO-1005,2026-09-31,South,STORE,00456,1,$89.90,Ben Osei
+SO-1006,2026-09-12,Sth,Store,00789,N/A,$15.00,Ben Osei
+SO-1007,2026-09-14,East,Phone,00123,-2,"$1,250.00",Chen Li
+SO-1008,2026-09-14,East,Phone,00456,4,"12,5",Chen Li
+SO-1008,2026-09-14,East,Phone,00456,6,$89.90,Chen Li
+SO-1009,2026-09-20,West,Online,00789,10,$15.00,Dara Kim
+SO-1009,2026-09-20,West,Online,00789,10,$15.00,Dara Kim
+,2026-09-21,West,Online,00123,1,"$1,250.00",Dara Kim
+SO-1011,2026-09-22,West,Fax,00456,2,$89.90,Dara Kim
+SO-1012,2026-10-02,North,Online,0123,1,"$1,250.00",Ana Silva
+SO-1013,2026-09-28,NULL,Store,00789,7,$15.00,Ben Osei
+SO-1014,2026-09-30,South,Online,00456,3,$89.90,Ben Osei

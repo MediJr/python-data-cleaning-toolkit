@@ -1,0 +1,2 @@
+order_id,order_date,region,channel,sku,quantity,unit_price,sales_rep,removal_reason
+SO-1009,2026-09-20,West,Online,00789,10,15,Dara Kim,exact duplicate of row 11

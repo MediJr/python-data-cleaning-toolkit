@@ -1,0 +1,34 @@
+{
+  "description": "Cleaning rules for data/sample/sales_raw.csv (synthetic monthly sales lines, September 2026). An order line is identified by order ID + SKU.",
+  "column_names": {"style": "snake_case"},
+  "missing_values": {"tokens": ["N/A", "NULL"]},
+  "text": [
+    {"columns": ["sales_rep"], "strip": true, "collapse_whitespace": true},
+    {"columns": ["region", "channel"], "strip": true}
+  ],
+  "categories": [
+    {"column": "region", "case_insensitive": true, "mapping": {"north": "North", "south": "South", "east": "East", "west": "West"}},
+    {"column": "channel", "case_insensitive": true, "mapping": {"online": "Online", "web": "Online", "store": "Store", "phone": "Phone"}}
+  ],
+  "dates": [
+    {"column": "order_date", "formats": ["%Y-%m-%d", "%d/%m/%Y", "%m/%d/%Y"]}
+  ],
+  "numbers": [
+    {"column": "quantity"},
+    {"column": "unit_price", "thousands": ",", "strip_chars": "$"}
+  ],
+  "duplicates": {"remove_exact": true, "key_columns": ["order_id", "sku"]},
+  "validation": [
+    {"id": "order_id_present", "rule": "not_null", "column": "order_id", "action": "quarantine"},
+    {"id": "channel_allowed", "rule": "allowed_values", "column": "channel", "values": ["Online", "Store", "Phone"], "action": "quarantine"},
+    {"id": "region_present", "rule": "not_null", "column": "region"},
+    {"id": "region_allowed", "rule": "allowed_values", "column": "region", "values": ["North", "South", "East", "West"]},
+    {"id": "order_date_is_iso_date", "rule": "type", "column": "order_date", "expected": "date"},
+    {"id": "order_date_in_september", "rule": "date_range", "column": "order_date", "min": "2026-09-01", "max": "2026-09-30"},
+    {"id": "quantity_present", "rule": "not_null", "column": "quantity"},
+    {"id": "quantity_at_least_1", "rule": "range", "column": "quantity", "min": 1},
+    {"id": "unit_price_is_number", "rule": "type", "column": "unit_price", "expected": "number"},
+    {"id": "sku_5_digits", "rule": "pattern", "column": "sku", "regex": "[0-9]{5}"},
+    {"id": "order_line_unique", "rule": "unique", "columns": ["order_id", "sku"]}
+  ]
+}

@@ -13,6 +13,7 @@ which runs:
 data-clean profile data/sample/customers_raw.csv --config config/customers_config.json --report-dir reports/examples --overwrite
 data-clean clean data/sample/customers_raw.csv reports/examples/customers_clean.csv --config config/customers_config.json --overwrite
 data-clean clean data/sample/orders_raw.xlsx reports/examples/orders_clean.xlsx --sheet Orders --config config/orders_config.json --overwrite
+data-clean clean data/sample/sales_raw.csv reports/examples/sales_clean.csv --config config/sales_config.json --overwrite
 data-clean clean data/sample/invalid/column_collision.csv reports/examples/column_collision_clean.csv --config config/invalid/collision_config.json --overwrite
 ```
 
@@ -21,6 +22,7 @@ data-clean clean data/sample/invalid/column_collision.csv reports/examples/colum
 | `customers_raw_profile.*` | Read-only profile of the raw customers file |
 | `customers_clean*` | Customers cleaning: cleaned data, quarantined rows, removed duplicate, JSON + Markdown report |
 | `orders_clean*` | Excel orders cleaning (same set of files, in `.xlsx`) |
+| `sales_clean*` | Monthly sales demo, explained step by step in [docs/demo-sales-cleaning.md](../../docs/demo-sales-cleaning.md) |
 | `column_collision_clean_report.*` | A run that is **refused** (column-name collision): failure report only, no data file |
 
 `tests/test_samples.py::test_committed_examples_match_a_fresh_run` fails if these files no

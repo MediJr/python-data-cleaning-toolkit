@@ -61,10 +61,15 @@ tool; no programming is needed to change the cleaning rules (they live in a JSON
 
 ## Technologies
 
-Python 3, [pandas](https://pandas.pydata.org/) for tabular operations,
-[openpyxl](https://openpyxl.readthedocs.io/) for `.xlsx` files, the standard library for
-everything else (`csv`, `argparse`, `json`, `hashlib`, `decimal`), and
-[pytest](https://docs.pytest.org/) for the tests. No other runtime dependency.
+| Technology | Used for |
+| --- | --- |
+| Python 3 (tested: 3.14.7) | The package and command-line interface (`argparse`) |
+| [pandas](https://pandas.pydata.org/) 3 | Tabular operations |
+| [openpyxl](https://openpyxl.readthedocs.io/) 3.1 | Reading and writing `.xlsx` files |
+| Python standard library | `csv` parsing, `decimal` numbers, `hashlib` fingerprints, `json` configuration and reports |
+| [pytest](https://docs.pytest.org/) | Test suite (development only) |
+
+No other runtime dependency.
 
 ## Tested environment
 
@@ -229,6 +234,30 @@ What happened, and what deliberately did **not** happen:
 
 The full row-by-row expectations are in [data/sample/README.md](data/sample/README.md),
 and the real outputs and reports are in [reports/examples/](reports/examples/).
+
+## Demo: monthly sales export
+
+A step-by-step scenario on a synthetic sales file (16 order lines for September 2026 with
+planted anomalies) is documented in [docs/demo-sales-cleaning.md](docs/demo-sales-cleaning.md):
+raw data, rules, what was fixed, what was deliberately left unchanged, quarantined rows,
+final file and reports.
+
+```bash
+data-clean clean data/sample/sales_raw.csv output/sales_clean.csv --config config/sales_config.json
+```
+
+Results observed on that file (real run; outputs committed in
+[reports/examples/](reports/examples/README.md)):
+
+| Measure | Value |
+| --- | --- |
+| Rows: raw → cleaned | 16 → 13 |
+| Removed (exact duplicate) / quarantined | 1 / 2 (missing order ID, unknown channel `Fax`) |
+| Cells changed in the cleaned file | 21 (labels, spaces, one date, prices such as `$1,250.00` → `1250`, `N/A`/`NULL` → empty) |
+| Kept unchanged and reported | 3 conversion failures (`05/09/2026` ambiguous, `2026-09-31` impossible, `12,5`) |
+| Validation failures | 15 on 10 input rows (11 rules) |
+| Output checks | 3 files reopened and verified; input SHA-256 unchanged |
+| Result | execution `SUCCESS`, data quality `ISSUES FOUND`, exit code 3 |
 
 ## Sample report
 
@@ -491,13 +520,30 @@ reports/examples/       real outputs and reports produced from the samples
 scripts/                sample-workbook generator, example regeneration
   benchmark/            reproducible performance benchmark (see docs/performance.md)
 tests/                  pytest suite
-docs/                   architecture, configuration, testing, performance, limitations
+docs/                   architecture, configuration, demo, testing, performance, limitations
 ```
 
 ## Sample data
 
 All sample data is synthetic: names, IDs and orders are invented and e-mail addresses use
 the reserved `example.com` domain. No external dataset is used.
+
+## Contributing
+
+Issues and pull requests are welcome. Before proposing a change:
+
+```powershell
+python -m pip install -e ".[dev]"
+python -m pytest -q
+python scripts/regenerate_examples.py
+```
+
+- Keep the rule of the project: a value that would need a guess is reported, never changed.
+- Add or update a test for every behaviour change; the tests compare outputs with
+  hand-derived expectations, not with the tool's own output.
+- If outputs change, regenerate `reports/examples/` with the script above and review the
+  diff; `tests/test_samples.py` fails if the committed examples are stale.
+- Use synthetic data only (reserved `example.com` e-mail addresses).
 
 ## License
 

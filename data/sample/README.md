@@ -7,6 +7,7 @@ is represented.
 | File | Purpose |
 | --- | --- |
 | `customers_raw.csv` | Main CSV example: 15 customer rows with typical quality problems |
+| `sales_raw.csv` | Monthly sales demo: 16 order lines with planted anomalies, used with `config/sales_config.json`; walkthrough and expected results in [docs/demo-sales-cleaning.md](../../docs/demo-sales-cleaning.md) |
 | `orders_raw.xlsx` | Excel example (sheet `Orders`; sheet `Read me` is a note). Built by `scripts/build_sample_xlsx.py` |
 | `invalid/` | Inputs the tool must refuse (see below) |
 | `expected/` | **Hand-written** expected outputs, derived from the rules below before the tool was run. Tests compare the tool's actual output against these files; they are never copied from tool output |

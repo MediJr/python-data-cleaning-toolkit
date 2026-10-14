@@ -16,7 +16,7 @@ from __future__ import annotations
 import datetime as dt
 import re
 import unicodedata
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal
 from typing import Iterable, Mapping, Sequence
 
 import pandas as pd
