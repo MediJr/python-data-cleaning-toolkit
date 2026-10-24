@@ -9,6 +9,10 @@ validation failure.
 > production-certified product and has not been used for a real client. Tested on
 > **Windows 11 with Python 3.14.7 only** (see [Tested environment](#tested-environment)).
 
+![Before and after on the synthetic sales demo](docs/images/overview.png)
+
+*Real output of the synthetic sales demo ([walkthrough](docs/demo-sales-cleaning.md)).*
+
 ## The problem it solves
 
 Spreadsheets exported from different systems rarely agree with each other: `NEW YORK`,
@@ -544,6 +548,14 @@ python scripts/regenerate_examples.py
 - If outputs change, regenerate `reports/examples/` with the script above and review the
   diff; `tests/test_samples.py` fails if the committed examples are stale.
 - Use synthetic data only (reserved `example.com` e-mail addresses).
+
+## Related projects
+
+Three independent projects covering the data chain, from raw files to the dashboard:
+
+1. **Data cleaning** — rule-based cleaning of CSV/Excel files with a full quality report — *this repository*
+1. **Data workflow automation** — declarative YAML workflows with verified exports: [python-data-automation-toolkit](https://github.com/MediJr/python-data-automation-toolkit)
+1. **Sales reporting** — quality checks, SQL star schema, KPIs and a Power BI dashboard: [python-reporting-pipeline](https://github.com/MediJr/python-reporting-pipeline)
 
 ## License
 
